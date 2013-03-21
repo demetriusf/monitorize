@@ -2,6 +2,8 @@ package com.asccode.siteswatch.telas;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 /**
@@ -12,14 +14,21 @@ import android.widget.Toast;
  * To change this template use File | Settings | File Templates.
  */
 public class Inicial extends Activity {
+
+    private ListView listView;
+
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
-        String email = getIntent().getStringExtra("email");
+        setContentView(R.layout.inicial);
 
+        this.listView  = (ListView) findViewById(R.id.listSites);
 
+        ArrayAdapter<String> sites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"Tem Estilo", "Carrapeta", "Jackie", "Asccode", "Olhar Criativo"});
 
-        Toast.makeText(this, getIntent().getStringExtra("email"), Toast.LENGTH_LONG).show();
+        this.listView.setAdapter(sites);
 
     }
+
 }

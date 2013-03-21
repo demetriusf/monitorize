@@ -3,29 +3,71 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@drawable/gradiente_principal"
+        >
 
-
-    <TextView
-            android:id="@+id/textViewEmail"
+    <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="E-mail: "
-            />
+            android:layout_gravity="center"
+            android:src="@drawable/icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
 
+            />
 
     <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="E-mail"
+            android:hint="@string/hintEmail"
+            android:typeface="normal"
+            android:inputType="textEmailAddress"
+
+            />
+
+    <EditText
+            android:id="@+id/editTextPwd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintPwd"
+            android:inputType="textPassword"
             />
 
     <Button
-            android:id="@+id/btnLogar"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="Logar"
+            android:id="@+id/btnLogar"
+            android:text="@string/btnLogin"
+            android:layout_gravity="center"
+            android:textColor="@color/brown"
             />
+
+    <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/white"
+            android:layout_marginTop="20dp"
+            />
+
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/labelCreateAccount"
+                />
+
+        <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnCriarConta"
+                android:text="@string/btnCreateAccount"
+                android:textColor="@color/brown"
+                android:layout_weight="1"
+                />
+
+    </LinearLayout>
 
 </LinearLayout>

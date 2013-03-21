@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">sites-watch</string>
+    <string name="app_name">Sites Watch</string>
+
+    <!-- LABELS -->
+    <string name="labelCreateAccount">Não possui uma conta?</string>
+
+    <!-- BUTTONS -->
+    <string name="btnCreateAccount" >Criar</string>
+    <string name="btnLogin" >Logar</string>
+    <string name="btnRegister" >Cadastrar</string>
+
+    <!-- PLACEHOLDERS -->
+    <string name="hintEmail">E-mail</string>
+    <string name="hintPwd">Senha</string>
+    <string name="hintRePwd">Confirmar senha</string>
+
+    <!-- FEEDBACK -->
+    <string name="fbEmptyEmail">E-mail deve ser válido</string>
+    <string name="fbEmptyPwd">Senha não deve ser vazia</string>
+    <string name="fbNotEqualPwd">Senhas devem coincidir</string>
+
 </resources>

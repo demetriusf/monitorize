@@ -18,20 +18,45 @@ import android.widget.Toast;
  */
 public class Login extends Activity {
 
+    private EditText editTextEmail;
+    private EditText editTextPwd;
+    private Button btnLogar;
+    private Button btnCriarConta;
+
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.login);
 
-        final EditText editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        Button btnLogar = (Button) findViewById(R.id.btnLogar);
+        // Recovery views
+        this.editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+        this.editTextPwd = (EditText) findViewById(R.id.editTextPwd);
+        this.btnLogar = (Button) findViewById(R.id.btnLogar);
+        this.btnCriarConta = (Button) findViewById(R.id.btnCriarConta);
 
-        btnLogar.setOnClickListener(new View.OnClickListener() {
+        this.btnLogar.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
+                Toast.makeText(Login.this, "Botao logar clicado", Toast.LENGTH_SHORT).show();
+
             }
+
+        });
+
+        this.btnCriarConta.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick( View view ){
+
+                Intent intent = new Intent(Login.this, CreateAccount.class);
+
+                startActivity(intent);
+
+            }
+
         });
 
     }
