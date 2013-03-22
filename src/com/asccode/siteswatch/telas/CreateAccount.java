@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.asccode.siteswatch.models.User;
+import com.asccode.siteswatch.task.RegisterUserTask;
 
 import java.util.regex.Pattern;
 
@@ -52,19 +53,20 @@ public class CreateAccount extends Activity {
                     user.setEmail(email);
                     user.setPwd(pwd);
 
-                    // Faz conexão e cadastrar
-                    if( true ){
-
-                        Intent inicialIntent = new Intent(CreateAccount.this, Inicial.class);
-                        startActivity(inicialIntent);
-
-                    }
+                    new RegisterUserTask(user, CreateAccount.this).execute();
 
                 }
 
             }
 
         });
+
+    }
+
+    public void registerSuccess(){
+
+        Intent inicialIntent = new Intent(this, Inicial.class);
+        startActivity(inicialIntent);
 
     }
 
