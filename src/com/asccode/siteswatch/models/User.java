@@ -27,7 +27,7 @@ public class User {
 
     public void setEmail(String email) {
 
-        if(!Pattern.compile("(\\w)+@(\\w)+[.](\\w)+([.](\\w)*)?$").matcher(email).find()){
+        if(!Pattern.compile("^(\\w)+@(\\w)+[.](\\w)+([.](\\w)*)?$").matcher(email).find()){
 
             throw new IllegalArgumentException("The email needs to be valid.");
 

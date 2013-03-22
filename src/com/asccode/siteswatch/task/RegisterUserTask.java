@@ -1,11 +1,13 @@
 package com.asccode.siteswatch.task;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.widget.Toast;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.support.WebServiceOperations;
 import com.asccode.siteswatch.telas.CreateAccount;
+import com.asccode.siteswatch.telas.R;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,7 +16,7 @@ import com.asccode.siteswatch.telas.CreateAccount;
  * Time: 22:17
  * To change this template use File | Settings | File Templates.
  */
-public class RegisterUserTask extends AsyncTask<Object, Object, String> {
+public class RegisterUserTask extends AsyncTask<Object, Object, Boolean> {
 
     private User user;
     private CreateAccount context;
@@ -35,18 +37,35 @@ public class RegisterUserTask extends AsyncTask<Object, Object, String> {
     }
 
     @Override
-    protected String doInBackground(Object... objects) {
+    protected Boolean doInBackground(Object... objects) {
+
         return new WebServiceOperations().registerUser(this.user);
+
     }
 
     @Override
-    protected void onPostExecute(String result){
+    protected void onPostExecute(Boolean result){
 
         this.progressDialog.dismiss();
 
-        Toast.makeText(this.context, result, Toast.LENGTH_LONG).show();
+        if(result){
 
-        this.context.registerSuccess();
+            Toast.makeText(this.context, "Registered successfully", Toast.LENGTH_LONG).show();
+
+            this.context.registerSuccess();
+
+        }else{
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
+            builder.setCancelable(true);
+            builder.setIcon(android.R.drawable.ic_dialog_alert);
+            builder.setTitle("Error");
+            builder.setMessage("An error occurred. Check the internet connection.");
+            builder.setPositiveButton("OK", null);
+            builder.show();
+
+        }
+
 
 
     }
