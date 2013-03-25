@@ -1,5 +1,6 @@
 package com.asccode.siteswatch.models;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
 /**
@@ -9,7 +10,7 @@ import java.util.regex.Pattern;
  * Time: 16:03
  * To change this template use File | Settings | File Templates.
  */
-public class User {
+public class User implements Serializable {
 
     private String email;
     private String pwd;

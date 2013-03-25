@@ -2,12 +2,15 @@ package com.asccode.siteswatch.telas;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.asccode.siteswatch.models.User;
+import com.asccode.siteswatch.task.AuthenticationUserTask;
+
+import java.util.regex.Pattern;
 
 /**
  * Created with IntelliJ IDEA.
@@ -40,7 +43,18 @@ public class Login extends Activity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(Login.this, "Botao logar clicado", Toast.LENGTH_SHORT).show();
+                String email = editTextEmail.getEditableText().toString();
+                String pwd = editTextPwd.getEditableText().toString();
+
+                if( validLogin() ){
+
+                    User user = new User();
+                    user.setEmail(email);
+                    user.setPwd(pwd);
+
+                    new AuthenticationUserTask(user, Login.this).execute();
+
+                }
 
             }
 
@@ -59,6 +73,30 @@ public class Login extends Activity {
 
         });
 
+    }
+
+    public void authenticationSuccess(){
+
+        Intent redirectIntent = new Intent(this, Inicial.class);
+        startActivity(redirectIntent);
+
+    }
+
+    private Boolean validLogin(){
+
+        if( this.editTextEmail.getEditableText().toString().isEmpty() || !Pattern.compile("^(\\w)+@(\\w)+[.](\\w)+([.](\\w)*)?$").matcher(this.editTextEmail.getEditableText().toString()).find()){
+
+            Toast.makeText(this, getString(R.string.fbEmptyEmail), Toast.LENGTH_LONG).show();
+            return false;
+
+        }else if( this.editTextPwd.getEditableText().toString().isEmpty() ){
+
+            Toast.makeText(this, getString(R.string.fbEmptyPwd), Toast.LENGTH_LONG).show();
+            return false;
+
+        }
+
+        return true;
     }
 
 }
