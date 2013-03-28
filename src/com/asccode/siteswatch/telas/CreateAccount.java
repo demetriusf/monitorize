@@ -74,17 +74,17 @@ public class CreateAccount extends Activity {
 
         if( this.editTextEmail.getEditableText().toString().isEmpty() || !Pattern.compile("^(\\w)+@(\\w)+[.](\\w)+([.](\\w)*)?$").matcher(this.editTextEmail.getEditableText().toString()).find()){
 
-            Toast.makeText(this, getString(R.string.fbEmptyEmail), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.fbAlertEmptyEmail), Toast.LENGTH_LONG).show();
             return false;
 
         }else if( this.editTextPwd.getEditableText().toString().isEmpty() ){
 
-            Toast.makeText(this, getString(R.string.fbEmptyPwd), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.fbAlertEmptyPwd), Toast.LENGTH_LONG).show();
             return false;
 
         }else if( !this.editTextPwd.getEditableText().toString().equals(this.editTextRePwd.getEditableText().toString()) ){
 
-            Toast.makeText(this, getString(R.string.fbNotEqualPwd), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.fbAlertNotEqualPwd), Toast.LENGTH_LONG).show();
             return false;
 
         }

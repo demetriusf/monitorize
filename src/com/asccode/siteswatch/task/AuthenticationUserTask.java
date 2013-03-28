@@ -1,11 +1,11 @@
 package com.asccode.siteswatch.task;
 
-import android.R;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.support.WebServiceOperations;
 import com.asccode.siteswatch.telas.Login;
+import com.asccode.siteswatch.telas.R;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,7 +30,7 @@ public class AuthenticationUserTask extends AsyncTask<Object, Object, Boolean> {
     @Override
     protected void onPreExecute(){
 
-        this.progressDialog = ProgressDialog.show(this.loginContext, "Wait...", "Estamos autenticando o seu login.", true, true);
+        this.progressDialog = ProgressDialog.show(this.loginContext, this.loginContext.getString(R.string.dialogTitleAuthUser), this.loginContext.getString(R.string.dialogBodyAuthUser), true, true);
 
     }
 
@@ -54,10 +54,10 @@ public class AuthenticationUserTask extends AsyncTask<Object, Object, Boolean> {
 
             ProgressDialog.Builder dialog = new ProgressDialog.Builder(this.loginContext);
             dialog.setCancelable(false);
-            dialog.setIcon(R.drawable.ic_dialog_alert);
-            dialog.setTitle("Error");
-            dialog.setMessage("Check your data and your internet connection. ");
-            dialog.setPositiveButton("OK", null);
+            dialog.setIcon(android.R.drawable.ic_dialog_alert);
+            dialog.setTitle(this.loginContext.getString(R.string.fbDialogErrorTitleUserAuthentication));
+            dialog.setMessage(this.loginContext.getString(R.string.fbDialogErrorBodyUserAuthentication));
+            dialog.setPositiveButton(this.loginContext.getString(R.string.fbDialogErrorPositiveButtonUserAuthentication), null);
             dialog.show();
 
         }

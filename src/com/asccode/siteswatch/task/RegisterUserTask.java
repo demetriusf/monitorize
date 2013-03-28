@@ -32,7 +32,7 @@ public class RegisterUserTask extends AsyncTask<Object, Object, Boolean> {
     @Override
     protected void onPreExecute(){
 
-        this.progressDialog = ProgressDialog.show(this.context, "Aguarde...", "Seu cadastro está sendo concluído", true, true);
+        this.progressDialog = ProgressDialog.show(this.context, this.context.getString(R.string.dialogTitleRegisterUser), this.context.getString(R.string.dialogBodyRegisterUser), true, true);
 
     }
 
@@ -50,7 +50,7 @@ public class RegisterUserTask extends AsyncTask<Object, Object, Boolean> {
 
         if(result){
 
-            Toast.makeText(this.context, "Registered successfully", Toast.LENGTH_LONG).show();
+            Toast.makeText(this.context, this.context.getString(R.string.fbAlertRegisteredSuccessfully), Toast.LENGTH_LONG).show();
 
             this.context.registerSuccess();
 
@@ -59,9 +59,9 @@ public class RegisterUserTask extends AsyncTask<Object, Object, Boolean> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
             builder.setCancelable(true);
             builder.setIcon(android.R.drawable.ic_dialog_alert);
-            builder.setTitle("Error");
-            builder.setMessage("An error occurred. Check the internet connection.");
-            builder.setPositiveButton("OK", null);
+            builder.setTitle(this.context.getString(R.string.fbDialogErrorTitleUserRegistration));
+            builder.setMessage(this.context.getString(R.string.fbDialogErrorBodyUserRegistration));
+            builder.setPositiveButton(this.context.getString(R.string.fbDialogErrorPositiveButtonUserRegistration), null);
             builder.show();
 
         }

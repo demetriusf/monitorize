@@ -15,9 +15,22 @@
     <string name="hintPwd">Senha</string>
     <string name="hintRePwd">Confirmar senha</string>
 
+    <!-- PROGRESS DIALOGS -->
+    <string name="dialogTitleRegisterUser">Aguarde...</string>
+    <string name="dialogBodyRegisterUser">Seu cadastro está sendo finalizado</string>
+    <string name="dialogTitleAuthUser">Aguarde...</string>
+    <string name="dialogBodyAuthUser">Seu login está sendo finalizado</string>
+
     <!-- FEEDBACK -->
-    <string name="fbEmptyEmail">E-mail deve ser válido</string>
-    <string name="fbEmptyPwd">Senha não deve ser vazia</string>
-    <string name="fbNotEqualPwd">Senhas devem coincidir</string>
+    <string name="fbAlertEmptyEmail">E-mail deve ser válido</string>
+    <string name="fbAlertEmptyPwd">Senha não deve ser vazia</string>
+    <string name="fbAlertNotEqualPwd">Senhas devem coincidir</string>
+    <string name="fbAlertRegisteredSuccessfully">Cadastrado com sucesso</string>
+    <string name="fbDialogErrorTitleUserRegistration">Falhou!</string>
+    <string name="fbDialogErrorBodyUserRegistration">Verifique a sua conexão com a internet</string>
+    <string name="fbDialogErrorPositiveButtonUserRegistration">OK</string>
+    <string name="fbDialogErrorTitleUserAuthentication">Falhou!</string>
+    <string name="fbDialogErrorBodyUserAuthentication">Verifique a sua conexão com a internet</string>
+    <string name="fbDialogErrorPositiveButtonUserAuthentication">OK</string>
 
 </resources>
