@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.asccode.siteswatch.dao.LoginDao;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,6 +29,8 @@ public class Inicial extends Activity {
         ArrayAdapter<String> sites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"Tem Estilo", "Carrapeta", "Jackie", "Asccode", "Olhar Criativo"});
 
         this.listView.setAdapter(sites);
+
+        Toast.makeText(this, new LoginDao(this).getLogged().getEmail(), Toast.LENGTH_LONG).show();
 
     }
 

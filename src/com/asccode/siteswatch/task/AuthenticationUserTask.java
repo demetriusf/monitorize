@@ -2,6 +2,8 @@ package com.asccode.siteswatch.task;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.widget.Toast;
+import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.support.WebServiceOperations;
 import com.asccode.siteswatch.telas.Login;
@@ -48,7 +50,17 @@ public class AuthenticationUserTask extends AsyncTask<Object, Object, Boolean> {
 
         if(result){
 
-            this.loginContext.authenticationSuccess();
+            LoginDao loginDao = new LoginDao(this.loginContext);
+
+            if(loginDao.login(this.user)){
+
+                this.loginContext.authenticationSuccess();
+
+            }else{
+
+                Toast.makeText(this.loginContext, this.loginContext.getString(R.string.fbAlertFailLogin), Toast.LENGTH_LONG).show();
+
+            }
 
         }else{
 

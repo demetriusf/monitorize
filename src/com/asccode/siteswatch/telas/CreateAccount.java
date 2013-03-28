@@ -72,7 +72,7 @@ public class CreateAccount extends Activity {
 
     private boolean validFields(){
 
-        if( this.editTextEmail.getEditableText().toString().isEmpty() || !Pattern.compile("^(\\w)+@(\\w)+[.](\\w)+([.](\\w)*)?$").matcher(this.editTextEmail.getEditableText().toString()).find()){
+        if( this.editTextEmail.getEditableText().toString().isEmpty() || !Pattern.compile("^(\\w){2,}@(\\w){2,}[.](\\w){2,}([.](\\w)*)?$").matcher(this.editTextEmail.getEditableText().toString()).find()){
 
             Toast.makeText(this, getString(R.string.fbAlertEmptyEmail), Toast.LENGTH_LONG).show();
             return false;

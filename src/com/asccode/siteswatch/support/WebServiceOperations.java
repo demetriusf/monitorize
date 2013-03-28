@@ -1,6 +1,7 @@
 package com.asccode.siteswatch.support;
 
 import android.util.Log;
+import android.widget.Toast;
 import com.asccode.siteswatch.models.User;
 import com.google.gson.Gson;
 import org.apache.http.HttpResponse;
@@ -42,6 +43,7 @@ public class WebServiceOperations {
 
             Gson gson = new Gson();
             httpPut.setEntity(new StringEntity(gson.toJson(user)));
+
             HttpResponse httpResponse = defaultHttpClient.execute(httpPut);
             Map<String, String> jsonResponse = gson.fromJson(EntityUtils.toString(httpResponse.getEntity()), Map.class) ;
 

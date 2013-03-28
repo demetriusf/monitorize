@@ -26,11 +26,15 @@
     <string name="fbAlertEmptyPwd">Senha não deve ser vazia</string>
     <string name="fbAlertNotEqualPwd">Senhas devem coincidir</string>
     <string name="fbAlertRegisteredSuccessfully">Cadastrado com sucesso</string>
+    <string name="fbAlertFailLogin">Seu login falhou. Aguarde um momento e tente mais tarde</string>
     <string name="fbDialogErrorTitleUserRegistration">Falhou!</string>
     <string name="fbDialogErrorBodyUserRegistration">Verifique a sua conexão com a internet</string>
     <string name="fbDialogErrorPositiveButtonUserRegistration">OK</string>
     <string name="fbDialogErrorTitleUserAuthentication">Falhou!</string>
     <string name="fbDialogErrorBodyUserAuthentication">Verifique a sua conexão com a internet</string>
     <string name="fbDialogErrorPositiveButtonUserAuthentication">OK</string>
+    <string name="fbDialogErrorTitleUserLogin">Falhou!</string>
+    <string name="fbDialogErrorBodyUserLogin">Seu login falhou. Aguarde um momento e tente mais tarde</string>
+    <string name="fbDialogErrorPositiveButtonUserLogin">OK</string>
 
 </resources>
