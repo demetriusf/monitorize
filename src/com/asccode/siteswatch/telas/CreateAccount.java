@@ -65,7 +65,7 @@ public class CreateAccount extends Activity {
 
     public void registerSuccess(){
 
-        Intent redirectIntent = new Intent(this, Inicial.class);
+        Intent redirectIntent = new Intent(this, Main.class);
         startActivity(redirectIntent);
 
     }

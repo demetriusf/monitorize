@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.task.AuthenticationUserTask;
 
@@ -77,7 +78,7 @@ public class Login extends Activity {
 
     public void authenticationSuccess(){
 
-        Intent redirectIntent = new Intent(this, Inicial.class);
+        Intent redirectIntent = new Intent(this, Main.class);
         startActivity(redirectIntent);
 
     }
