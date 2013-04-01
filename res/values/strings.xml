@@ -6,7 +6,7 @@
     <string name="labelCreateAccount">Não possui uma conta?</string>
 
     <!-- MENUS -->
-    <string name="menuMainTitleLogout">Sair</string>
+    <string name="menuItemTitleLogout">Sair</string>
 
     <!-- BUTTONS -->
     <string name="btnCreateAccount" >Criar</string>

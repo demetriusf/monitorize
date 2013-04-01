@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -25,18 +26,7 @@ public class Main extends Activity {
 
         super.onCreate(savedInstanceState);
 
-        //Isn't user logged?
-        LoginDao loginDao = new LoginDao(this);
-
-        User userLogged = loginDao.getLogged();
-
-        if( userLogged == null ){  // Redirect to Login
-
-            Intent intentLogin = new Intent(this, Login.class);
-            startActivity(intentLogin);
-
-
-        }else{
+        if( this.isUserLogged() ){
 
             setContentView(R.layout.inicial);
 
@@ -49,6 +39,16 @@ public class Main extends Activity {
         }
 
 
+
+    }
+
+    @Override
+    public void onResume(){
+
+        super.onResume();
+
+        this.redirectUserNotLogged();
+
     }
 
     @Override
@@ -58,4 +58,41 @@ public class Main extends Activity {
         return true;   //To change body of overridden methods use File | Settings | File Templates.
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch( item.getItemId() ){
+
+            case R.id.menuItemLogout:
+                new com.asccode.siteswatch.support.Login(this).logout();
+                break;
+
+            default: Toast.makeText(this, "Opção não encontrada", Toast.LENGTH_SHORT).show();
+        }
+
+        return true;
+    }
+
+    private void redirectUserNotLogged(){
+
+        if( !this.isUserLogged() ){
+
+            Intent intentLogin = new Intent(this, Login.class);
+            startActivity(intentLogin);
+
+        }
+
+    }
+
+    private boolean isUserLogged(){
+
+        LoginDao loginDao = new LoginDao(this);
+
+        User userLogged = loginDao.getLogged();
+
+        return userLogged != null;
+
+    }
+
 }

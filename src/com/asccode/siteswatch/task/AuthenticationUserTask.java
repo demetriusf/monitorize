@@ -1,12 +1,15 @@
 package com.asccode.siteswatch.task;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.support.WebServiceOperations;
 import com.asccode.siteswatch.telas.Login;
+import com.asccode.siteswatch.telas.Main;
 import com.asccode.siteswatch.telas.R;
 
 /**
@@ -19,20 +22,20 @@ import com.asccode.siteswatch.telas.R;
 public class AuthenticationUserTask extends AsyncTask<Object, Object, Boolean> {
 
     private User user;
-    private Login loginContext;
+    private Context context;
     private ProgressDialog progressDialog;
 
-    public AuthenticationUserTask(User user, Login loginContext){
+    public AuthenticationUserTask(User user, Context context){
 
         this.user = user;
-        this.loginContext = loginContext;
+        this.context = context;
 
     }
 
     @Override
     protected void onPreExecute(){
 
-        this.progressDialog = ProgressDialog.show(this.loginContext, this.loginContext.getString(R.string.dialogTitleAuthUser), this.loginContext.getString(R.string.dialogBodyAuthUser), true, true);
+        this.progressDialog = ProgressDialog.show(this.context, this.context.getString(R.string.dialogTitleAuthUser), this.context.getString(R.string.dialogBodyAuthUser), true, true);
 
     }
 
@@ -50,26 +53,27 @@ public class AuthenticationUserTask extends AsyncTask<Object, Object, Boolean> {
 
         if(result){
 
-            LoginDao loginDao = new LoginDao(this.loginContext);
+            LoginDao loginDao = new LoginDao(this.context);
 
             if(loginDao.login(this.user)){
 
-                this.loginContext.authenticationSuccess();
+                Intent loginSuccess = new Intent(this.context, Main.class);
+                this.context.startActivity(loginSuccess);
 
             }else{
 
-                Toast.makeText(this.loginContext, this.loginContext.getString(R.string.fbAlertFailLogin), Toast.LENGTH_LONG).show();
+                Toast.makeText(this.context, this.context.getString(R.string.fbAlertFailLogin), Toast.LENGTH_LONG).show();
 
             }
 
         }else{
 
-            ProgressDialog.Builder dialog = new ProgressDialog.Builder(this.loginContext);
+            ProgressDialog.Builder dialog = new ProgressDialog.Builder(this.context);
             dialog.setCancelable(false);
             dialog.setIcon(android.R.drawable.ic_dialog_alert);
-            dialog.setTitle(this.loginContext.getString(R.string.fbDialogErrorTitleUserAuthentication));
-            dialog.setMessage(this.loginContext.getString(R.string.fbDialogErrorBodyUserAuthentication));
-            dialog.setPositiveButton(this.loginContext.getString(R.string.fbDialogErrorPositiveButtonUserAuthentication), null);
+            dialog.setTitle(this.context.getString(R.string.fbDialogErrorTitleUserAuthentication));
+            dialog.setMessage(this.context.getString(R.string.fbDialogErrorBodyUserAuthentication));
+            dialog.setPositiveButton(this.context.getString(R.string.fbDialogErrorPositiveButtonUserAuthentication), null);
             dialog.show();
 
         }

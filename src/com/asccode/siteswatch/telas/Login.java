@@ -53,7 +53,7 @@ public class Login extends Activity {
                     user.setEmail(email);
                     user.setPwd(pwd);
 
-                    new AuthenticationUserTask(user, Login.this).execute();
+                    new com.asccode.siteswatch.support.Login(Login.this).login(user);
 
                 }
 
@@ -76,16 +76,9 @@ public class Login extends Activity {
 
     }
 
-    public void authenticationSuccess(){
-
-        Intent redirectIntent = new Intent(this, Main.class);
-        startActivity(redirectIntent);
-
-    }
-
     private Boolean validLogin(){
 
-        if( this.editTextEmail.getEditableText().toString().isEmpty() || !Pattern.compile("^(\\w){2,}@(\\w){2,}[.](\\w){2,}([.](\\w)*)?$").matcher(this.editTextEmail.getEditableText().toString()).find()){
+        if( !Pattern.compile("^(\\w){2,}@(\\w){2,}[.](\\w){2,}([.](\\w)*)?$").matcher(this.editTextEmail.getEditableText().toString()).find() ){
 
             Toast.makeText(this, getString(R.string.fbAlertEmptyEmail), Toast.LENGTH_LONG).show();
             return false;

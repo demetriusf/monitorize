@@ -28,7 +28,7 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
 
-        if(!Pattern.compile("^(\\w)+@(\\w)+[.](\\w)+([.](\\w)*)?$").matcher(email).find()){
+        if(!Pattern.compile("^(\\w){2,}@(\\w){2,}[.](\\w){2,}([.](\\w)*)?$").matcher(email).find()){
 
             throw new IllegalArgumentException("The email needs to be valid.");
 
