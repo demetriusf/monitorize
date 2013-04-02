@@ -41,11 +41,11 @@ public class Login extends Activity {
 
         this.btnLogar.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
+                @Override
+                public void onClick(View view) {
 
-                String email = editTextEmail.getEditableText().toString();
-                String pwd = editTextPwd.getEditableText().toString();
+            String email = editTextEmail.getEditableText().toString();
+            String pwd = editTextPwd.getEditableText().toString();
 
                 if( validLogin() ){
 
@@ -59,20 +59,20 @@ public class Login extends Activity {
 
             }
 
-        });
+            });
 
         this.btnCriarConta.setOnClickListener(new View.OnClickListener(){
 
-            @Override
-            public void onClick( View view ){
+                @Override
+                public void onClick( View view ){
 
-                Intent intent = new Intent(Login.this, CreateAccount.class);
+            Intent intent = new Intent(Login.this, CreateAccount.class);
 
-                startActivity(intent);
+            startActivity(intent);
 
             }
 
-        });
+            });
 
     }
 

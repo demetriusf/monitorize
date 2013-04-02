@@ -1,5 +1,6 @@
 package com.asccode.siteswatch.task;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -59,6 +60,8 @@ public class AuthenticationUserTask extends AsyncTask<Object, Object, Boolean> {
 
                 Intent loginSuccess = new Intent(this.context, Main.class);
                 this.context.startActivity(loginSuccess);
+
+                ((Activity)this.context).finish();
 
             }else{
 

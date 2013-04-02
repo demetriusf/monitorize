@@ -1,15 +1,12 @@
 package com.asccode.siteswatch.telas;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-import com.asccode.siteswatch.dao.LoginDao;
-import com.asccode.siteswatch.models.User;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,7 +23,7 @@ public class Main extends Activity {
 
         super.onCreate(savedInstanceState);
 
-        if( this.isUserLogged() ){
+        if( new com.asccode.siteswatch.support.Login(this).isUserLogged()){
 
             setContentView(R.layout.inicial);
 
@@ -47,7 +44,13 @@ public class Main extends Activity {
 
         super.onResume();
 
-        this.redirectUserNotLogged();
+        com.asccode.siteswatch.support.Login supportLogin = new com.asccode.siteswatch.support.Login(this);
+
+        if( !supportLogin.isUserLogged() ){
+
+            supportLogin.redirectNotLoggedUser();
+
+        }
 
     }
 
@@ -72,27 +75,6 @@ public class Main extends Activity {
         }
 
         return true;
-    }
-
-    private void redirectUserNotLogged(){
-
-        if( !this.isUserLogged() ){
-
-            Intent intentLogin = new Intent(this, Login.class);
-            startActivity(intentLogin);
-
-        }
-
-    }
-
-    private boolean isUserLogged(){
-
-        LoginDao loginDao = new LoginDao(this);
-
-        User userLogged = loginDao.getLogged();
-
-        return userLogged != null;
-
     }
 
 }

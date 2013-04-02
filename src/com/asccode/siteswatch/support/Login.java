@@ -41,4 +41,32 @@ public class Login {
 
     }
 
+    public void redirectLoggedUser(){
+
+
+        Intent intentLogin = new Intent(this.context, com.asccode.siteswatch.telas.Login.class);
+        this.context.startActivity(intentLogin);
+
+
+    }
+
+    public void redirectNotLoggedUser(){
+
+
+        Intent intentLogin = new Intent(this.context, com.asccode.siteswatch.telas.Login.class);
+        this.context.startActivity(intentLogin);
+
+
+    }
+
+    public boolean isUserLogged(){
+
+        LoginDao loginDao = new LoginDao(this.context);
+
+        User userLogged = loginDao.getLogged();
+
+        return userLogged != null;
+
+    }
+
 }

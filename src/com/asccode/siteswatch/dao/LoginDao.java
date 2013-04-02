@@ -47,6 +47,10 @@ public class LoginDao extends SQLiteOpenHelper {
 
         }
 
+        cursor.close();
+
+        getWritableDatabase().close();
+
         return user;
 
     }
@@ -78,6 +82,8 @@ public class LoginDao extends SQLiteOpenHelper {
             builder.show();
 
         }
+
+        getWritableDatabase().close();
 
         return userLogged ;
 
