@@ -1,11 +1,13 @@
 package com.asccode.siteswatch.support;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.task.AuthenticationUserTask;
+import com.asccode.siteswatch.telas.Main;
 import com.asccode.siteswatch.telas.R;
 
 /**
@@ -35,18 +37,16 @@ public class Login {
 
         new LoginDao(this.context).logout();
 
-        Intent intent = new Intent(this.context, com.asccode.siteswatch.telas.Login.class);
-        this.context.startActivity(intent);
-
+        redirectNotLoggedUser();
 
     }
 
     public void redirectLoggedUser(){
 
-
-        Intent intentLogin = new Intent(this.context, com.asccode.siteswatch.telas.Login.class);
-        this.context.startActivity(intentLogin);
-
+        Intent loginSuccess = new Intent(this.context, Main.class);
+        loginSuccess.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        this.context.startActivity(loginSuccess);
+        ((Activity)this.context).finish();
 
     }
 
@@ -54,8 +54,9 @@ public class Login {
 
 
         Intent intentLogin = new Intent(this.context, com.asccode.siteswatch.telas.Login.class);
+        intentLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         this.context.startActivity(intentLogin);
-
+        ((Activity)this.context).finish();
 
     }
 

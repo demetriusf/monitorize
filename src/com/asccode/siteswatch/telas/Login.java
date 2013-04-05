@@ -66,11 +66,11 @@ public class Login extends Activity {
                 @Override
                 public void onClick( View view ){
 
-            Intent intent = new Intent(Login.this, CreateAccount.class);
+                    Intent intent = new Intent(Login.this, CreateAccount.class);
 
-            startActivity(intent);
+                    startActivity(intent);
 
-            }
+                }
 
             });
 

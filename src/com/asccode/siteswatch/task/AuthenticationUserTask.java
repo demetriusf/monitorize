@@ -1,16 +1,13 @@
 package com.asccode.siteswatch.task;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.models.User;
+import com.asccode.siteswatch.support.Login;
 import com.asccode.siteswatch.support.WebServiceOperations;
-import com.asccode.siteswatch.telas.Login;
-import com.asccode.siteswatch.telas.Main;
 import com.asccode.siteswatch.telas.R;
 
 /**
@@ -58,10 +55,7 @@ public class AuthenticationUserTask extends AsyncTask<Object, Object, Boolean> {
 
             if(loginDao.login(this.user)){
 
-                Intent loginSuccess = new Intent(this.context, Main.class);
-                this.context.startActivity(loginSuccess);
-
-                ((Activity)this.context).finish();
+               new Login(this.context).redirectLoggedUser();
 
             }else{
 
