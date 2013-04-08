@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">sites-watch</string>
+    <string name="app_name">Sites Watch</string>
 
     <!-- LABELS -->
     <string name="labelCreateAccount">Não possui uma conta?</string>
+    <string name="labelSiteOptions">Opções</string>
+    <string name="labelSitePingOption">Ping</string>
 
     <!-- MENUS -->
     <string name="menuItemTitleLogout">Sair</string>
+    <string name="menuItemTitleSiteAdd">Adicionar Site</string>
 
     <!-- BUTTONS -->
     <string name="btnCreateAccount" >Criar</string>
     <string name="btnLogin" >Logar</string>
     <string name="btnRegister" >Cadastrar</string>
+    <string name="btnSiteCreate" >Cadastrar</string>
+    <string name="btnSiteUpdate" >Atualizar</string>
 
     <!-- PLACEHOLDERS -->
     <string name="hintEmail">E-mail</string>
@@ -30,6 +35,7 @@
     <string name="fbAlertNotEqualPwd">Senhas devem coincidir</string>
     <string name="fbAlertRegisteredSuccessfully">Cadastrado com sucesso</string>
     <string name="fbAlertFailLogin">Seu login falhou. Aguarde um momento e tente mais tarde</string>
+    <string name="fbAlertSiteAddedSuccessfully">Site cadastrado com sucesso</string>
     <string name="fbDialogErrorTitleUserRegistration">Falhou!</string>
     <string name="fbDialogErrorBodyUserRegistration">Verifique a sua conexão com a internet</string>
     <string name="fbDialogErrorPositiveButtonUserRegistration">OK</string>
@@ -39,5 +45,8 @@
     <string name="fbDialogErrorTitleUserLogin">Falhou!</string>
     <string name="fbDialogErrorBodyUserLogin">Seu login falhou. Aguarde um momento e tente mais tarde</string>
     <string name="fbDialogErrorPositiveButtonUserLogin">OK</string>
+    <string name="fbDialogErrorTitleSiteAdded">Falhou!</string>
+    <string name="fbDialogErrorBodySiteAdded">Não foi possível adicionar o site. Verifique a sua conexão com a internet!</string>
+    <string name="fbDialogErrorPositiveButtonSiteAdded">OK</string>
 
 </resources>

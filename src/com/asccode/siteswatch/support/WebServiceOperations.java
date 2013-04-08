@@ -2,6 +2,7 @@ package com.asccode.siteswatch.support;
 
 import android.util.Log;
 import android.widget.Toast;
+import com.asccode.siteswatch.models.Site;
 import com.asccode.siteswatch.models.User;
 import com.google.gson.Gson;
 import org.apache.http.HttpResponse;
@@ -25,7 +26,6 @@ public class WebServiceOperations {
     private final static String TAG_DEBUG = "WEBSERVICE";
     private final static String URL_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/user";
     private final static String URL_AUTHENTICATION__USER_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/auth/user";
-
 
     public Boolean registerUser(User user){
 
@@ -93,4 +93,19 @@ public class WebServiceOperations {
         return result;
     }
 
+    public Boolean siteAdd(Site site){
+
+        Log.d(WebServiceOperations.TAG_DEBUG, site.getName());
+
+        return true;
+
+    }
+
+    public Boolean siteUpdate(Site site) {
+
+        Log.d(WebServiceOperations.TAG_DEBUG, site.getName());
+
+        return true;
+
+    }
 }

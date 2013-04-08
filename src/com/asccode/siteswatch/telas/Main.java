@@ -1,6 +1,7 @@
 package com.asccode.siteswatch.telas;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,8 +36,6 @@ public class Main extends Activity {
 
         }
 
-
-
     }
 
     @Override
@@ -69,6 +68,10 @@ public class Main extends Activity {
 
             case R.id.menuItemLogout:
                 new com.asccode.siteswatch.support.Login(this).logout();
+                break;
+
+            case R.id.menuItemSiteAdd:
+                startActivity(new Intent(this, Site.class));
                 break;
 
             default: Toast.makeText(this, "Opção não encontrada", Toast.LENGTH_SHORT).show();
