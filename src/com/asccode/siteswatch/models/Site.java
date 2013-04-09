@@ -11,9 +11,19 @@ import java.io.Serializable;
  */
 public class Site implements Serializable {
 
+    private User user;
     private String name;
     private String url;
+    private Boolean receiveNotification;
     private Boolean optPing;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getName() {
         return name;
@@ -29,6 +39,14 @@ public class Site implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Boolean getReceiveNotification() {
+        return receiveNotification;
+    }
+
+    public void setReceiveNotification(Boolean receiveNotification) {
+        this.receiveNotification = receiveNotification;
     }
 
     public Boolean getOptPing() {

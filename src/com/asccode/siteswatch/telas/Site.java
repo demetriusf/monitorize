@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import com.asccode.siteswatch.dao.LoginDao;
+import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.task.SiteAddTask;
 import com.asccode.siteswatch.task.SiteUpdateTask;
 
@@ -20,9 +22,11 @@ public class Site extends Activity {
 
     private EditText editTextNomeSite;
     private EditText editTextUrl;
+    private CheckBox checkBoxReceiveNotification;
     private CheckBox checkBoxOptPing;
     private Button button;
     private com.asccode.siteswatch.models.Site site;
+    private boolean opAdd = true;
 
     public void onCreate(Bundle savedInstanceState) {
 
@@ -32,6 +36,7 @@ public class Site extends Activity {
 
         this.editTextNomeSite = (EditText) findViewById(R.id.editTextNomeSite);
         this.editTextUrl = (EditText) findViewById(R.id.editTextUrl);
+        this.checkBoxReceiveNotification = (CheckBox) findViewById(R.id.checkBoxReceiveNotification);
         this.checkBoxOptPing = (CheckBox) findViewById(R.id.checkBoxOptPing);
         this.button = (Button) findViewById(R.id.button);
 
@@ -41,8 +46,10 @@ public class Site extends Activity {
 
             this.editTextNomeSite.setText(this.site.getName());
             this.editTextUrl.setText(this.site.getUrl());
+            this.checkBoxReceiveNotification.setChecked(this.site.getReceiveNotification());
             this.checkBoxOptPing.setChecked(this.site.getOptPing());
             this.button.setText(getString(R.string.btnSiteUpdate));
+            this.opAdd = false;
 
         }else{
 
@@ -54,11 +61,17 @@ public class Site extends Activity {
             @Override
             public void onClick(View view) {
 
+                //Teste
+                User user = new LoginDao(Site.this).getLogged();
+                site.setUser(user);
+
+                //-------------
                 site.setName(editTextNomeSite.getEditableText().toString());
                 site.setUrl(editTextUrl.getEditableText().toString());
+                site.setReceiveNotification(checkBoxReceiveNotification.isChecked());
                 site.setOptPing(checkBoxOptPing.isChecked());
 
-                if( site != null ){ // Update
+                if( !opAdd ){ // Update
 
                     new SiteUpdateTask(site, Site.this).execute();
 

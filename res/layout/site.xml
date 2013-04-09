@@ -22,16 +22,37 @@
             android:id="@+id/editTextNomeSite"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome"
+            android:hint="@string/hintSiteName"
             />
 
     <EditText
             android:id="@+id/editTextUrl"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Site Url"
+            android:hint="@string/hintSiteUrl"
             android:inputType="textUri"
             />
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/labelSiteReceiveNotification"
+                android:textSize="17sp"
+                />
+
+        <CheckBox
+                android:id="@+id/checkBoxReceiveNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+    </LinearLayout>
 
     <View
             android:layout_width="fill_parent"

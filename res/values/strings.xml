@@ -4,7 +4,8 @@
 
     <!-- LABELS -->
     <string name="labelCreateAccount">Não possui uma conta?</string>
-    <string name="labelSiteOptions">Opções</string>
+    <string name="labelSiteReceiveNotification">Receber Notificação</string>
+    <string name="labelSiteOptions">Verificações</string>
     <string name="labelSitePingOption">Ping</string>
 
     <!-- MENUS -->
@@ -22,12 +23,16 @@
     <string name="hintEmail">E-mail</string>
     <string name="hintPwd">Senha</string>
     <string name="hintRePwd">Confirmar senha</string>
+    <string name="hintSiteName">Nome</string>
+    <string name="hintSiteUrl">http://</string>
 
     <!-- PROGRESS DIALOGS -->
     <string name="dialogTitleRegisterUser">Aguarde...</string>
     <string name="dialogBodyRegisterUser">Seu cadastro está sendo finalizado</string>
     <string name="dialogTitleAuthUser">Aguarde...</string>
     <string name="dialogBodyAuthUser">Seu login está sendo finalizado</string>
+    <string name="dialogTitleSiteAdd">Aguarde...</string>
+    <string name="dialogBodySiteAdd">Site sendo adicionado</string>
 
     <!-- FEEDBACK -->
     <string name="fbAlertEmptyEmail">E-mail deve ser válido</string>
@@ -35,7 +40,7 @@
     <string name="fbAlertNotEqualPwd">Senhas devem coincidir</string>
     <string name="fbAlertRegisteredSuccessfully">Cadastrado com sucesso</string>
     <string name="fbAlertFailLogin">Seu login falhou. Aguarde um momento e tente mais tarde</string>
-    <string name="fbAlertSiteAddedSuccessfully">Site cadastrado com sucesso</string>
+    <string name="fbAlertSiteAddedSuccessfully">Site adicionado com sucesso</string>
     <string name="fbDialogErrorTitleUserRegistration">Falhou!</string>
     <string name="fbDialogErrorBodyUserRegistration">Verifique a sua conexão com a internet</string>
     <string name="fbDialogErrorPositiveButtonUserRegistration">OK</string>

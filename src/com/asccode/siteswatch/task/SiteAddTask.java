@@ -33,8 +33,7 @@ public class SiteAddTask extends AsyncTask<Object, Object, Boolean> {
     @Override
     protected void onPreExecute(){
 
-        this.progressDialog = new ProgressDialog(this.context);
-        this.progressDialog.show();
+        this.progressDialog = ProgressDialog.show(this.context, this.context.getString(R.string.dialogTitleSiteAdd), this.context.getString(R.string.dialogBodySiteAdd), true, true);
 
     }
 
