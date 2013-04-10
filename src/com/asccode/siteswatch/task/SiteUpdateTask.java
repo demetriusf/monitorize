@@ -16,12 +16,16 @@ import com.asccode.siteswatch.support.WebServiceOperations;
 public class SiteUpdateTask extends AsyncTask<Object, Object, Boolean> {
 
     private Site site;
+    private String loginUserToken;
     private Context context;
     private ProgressDialog progressDialog;
 
-    public SiteUpdateTask(Site site, Context context) {
+    public SiteUpdateTask(Site site, String loginUserToken, Context context) {
+
         this.site = site;
+        this.loginUserToken = loginUserToken;
         this.context = context;
+
     }
 
     @Override
@@ -34,7 +38,9 @@ public class SiteUpdateTask extends AsyncTask<Object, Object, Boolean> {
 
     @Override
     protected Boolean doInBackground(Object... objects) {
-        return new WebServiceOperations().siteUpdate(this.site);
+
+        return new WebServiceOperations().siteUpdate(this.site, this.loginUserToken);
+
     }
 
     @Override

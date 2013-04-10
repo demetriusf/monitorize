@@ -3,9 +3,11 @@ package com.asccode.siteswatch.telas;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.task.SiteAddTask;
@@ -61,28 +63,47 @@ public class Site extends Activity {
             @Override
             public void onClick(View view) {
 
-                //Teste
-                User user = new LoginDao(Site.this).getLogged();
-                site.setUser(user);
-
-                //-------------
                 site.setName(editTextNomeSite.getEditableText().toString());
                 site.setUrl(editTextUrl.getEditableText().toString());
                 site.setReceiveNotification(checkBoxReceiveNotification.isChecked());
                 site.setOptPing(checkBoxOptPing.isChecked());
 
-                if( !opAdd ){ // Update
+                if( isValidSite( site ) ){
 
-                    new SiteUpdateTask(site, Site.this).execute();
+                    if( !opAdd ){ // Update
 
-                }else{ //Save
+                        new SiteUpdateTask(site, new LoginDao(Site.this).getTokenUserLogged(), Site.this).execute();
 
-                    new SiteAddTask(site, Site.this).execute();
+                    }else{ //Save
+
+                        new SiteAddTask(site, new LoginDao(Site.this).getTokenUserLogged(), Site.this).execute();
+
+                    }
 
                 }
 
             }
         });
+
+    }
+
+    private boolean isValidSite( com.asccode.siteswatch.models.Site site ){
+
+        if( site.getName().isEmpty() ){
+
+            Toast.makeText(this, getString(R.string.fbAlertEmptySiteName), Toast.LENGTH_LONG).show();
+
+            return false;
+
+        }else if( !URLUtil.isValidUrl( site.getUrl() ) ){
+
+            Toast.makeText(this, getString(R.string.fbAlertEmptySiteUrl), Toast.LENGTH_LONG).show();
+
+            return false;
+
+        }
+
+        return true;
 
     }
 

@@ -20,12 +20,14 @@ import com.asccode.siteswatch.telas.R;
 public class SiteAddTask extends AsyncTask<Object, Object, Boolean> {
 
     private Site site;
+    private String loginUserToken;
     private Context context;
     private ProgressDialog progressDialog;
 
-    public SiteAddTask(Site site, Context context) {
+    public SiteAddTask(Site site, String loginUserToken, Context context) {
 
         this.site = site;
+        this.loginUserToken = loginUserToken;
         this.context = context;
 
     }
@@ -40,7 +42,7 @@ public class SiteAddTask extends AsyncTask<Object, Object, Boolean> {
     @Override
     protected Boolean doInBackground(Object... objects) {
 
-        return new WebServiceOperations().siteAdd(this.site);
+        return new WebServiceOperations().siteAdd(this.site, this.loginUserToken);
 
     }
 

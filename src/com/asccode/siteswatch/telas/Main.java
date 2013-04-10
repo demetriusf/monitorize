@@ -3,8 +3,11 @@ package com.asccode.siteswatch.telas;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -19,6 +22,7 @@ import android.widget.Toast;
 public class Main extends Activity {
 
     private ListView listView;
+    private static final String TAG_DEBUG = "MAIN";
 
     public void onCreate(Bundle savedInstanceState) {
 
@@ -33,6 +37,8 @@ public class Main extends Activity {
             ArrayAdapter<String> sites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"Tem Estilo", "Carrapeta", "Jackie", "Asccode", "Olhar Criativo"});
 
             this.listView.setAdapter(sites);
+
+            registerForContextMenu(this.listView);
 
         }
 
@@ -74,10 +80,34 @@ public class Main extends Activity {
                 startActivity(new Intent(this, Site.class));
                 break;
 
-            default: Toast.makeText(this, "Opção não encontrada", Toast.LENGTH_SHORT).show();
+            default:
+                Log.d(Main.TAG_DEBUG, "ANY EVENT IS ASSOCIATED WITH THE MENU ITEM: "+item.getTitle().toString());
         }
 
         return true;
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        getMenuInflater().inflate(R.menu.main_context_menu, menu);
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        switch( item.getItemId() ){
+
+            case R.id.menuItemMainContextEdit:
+                Toast.makeText( this, "Editar", Toast.LENGTH_LONG ).show();
+                break;
+            default:
+                Log.d(Main.TAG_DEBUG, "ANY EVENT IS ASSOCIATED WITH THE CONTEXT MENU ITEM: "+item.getTitle().toString());
+        }
+
+        return true;
+    }
 }

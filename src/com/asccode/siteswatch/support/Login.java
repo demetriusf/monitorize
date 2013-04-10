@@ -3,12 +3,10 @@ package com.asccode.siteswatch.support;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.task.AuthenticationUserTask;
 import com.asccode.siteswatch.telas.Main;
-import com.asccode.siteswatch.telas.R;
 
 /**
  * Created with IntelliJ IDEA.
@@ -64,9 +62,7 @@ public class Login {
 
         LoginDao loginDao = new LoginDao(this.context);
 
-        User userLogged = loginDao.getLogged();
-
-        return userLogged != null;
+        return loginDao.getTokenUserLogged() != null;
 
     }
 

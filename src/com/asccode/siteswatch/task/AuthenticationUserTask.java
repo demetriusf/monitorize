@@ -17,7 +17,7 @@ import com.asccode.siteswatch.telas.R;
  * Time: 13:46
  * To change this template use File | Settings | File Templates.
  */
-public class AuthenticationUserTask extends AsyncTask<Object, Object, Boolean> {
+public class AuthenticationUserTask extends AsyncTask<Object, Object, String> {
 
     private User user;
     private Context context;
@@ -38,22 +38,22 @@ public class AuthenticationUserTask extends AsyncTask<Object, Object, Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(Object... objects) {
+    protected String doInBackground(Object... objects) {
 
         return new WebServiceOperations().userAuthentication(this.user);
 
     }
 
     @Override
-    protected void onPostExecute( Boolean result ){
+    protected void onPostExecute( String result ){
 
         this.progressDialog.dismiss();
 
-        if(result){
+        if(result != ""){
 
             LoginDao loginDao = new LoginDao(this.context);
 
-            if(loginDao.login(this.user)){
+            if(loginDao.login(result)){
 
                new Login(this.context).redirectLoggedUser();
 

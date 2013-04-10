@@ -24,10 +24,11 @@ import java.util.Map;
  */
 public class WebServiceOperations {
 
-    private final static String TAG_DEBUG = "WEBSERVICE";
-    private final static String URL_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/user";
-    private final static String URL_AUTHENTICATION__USER_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/auth/user";
-    private static final String URL_SITE__ADD_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/site";
+    private static final String TAG_DEBUG = "WEBSERVICE";
+    private static final String URL_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/user";
+    private static final String URL_AUTHENTICATION__USER_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/auth/user";
+    private static final String URL_SITE_ADD_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/site";
+    private static final String TOKEN_MAGIC_KEY = "5I735_W47CH~";
 
     public Boolean registerUser(User user){
 
@@ -63,7 +64,7 @@ public class WebServiceOperations {
 
     }
 
-    public Boolean userAuthentication(User user){
+    public String userAuthentication(User user){
 
         DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost(WebServiceOperations.URL_AUTHENTICATION__USER_WEB_SERVICE);
@@ -71,20 +72,31 @@ public class WebServiceOperations {
         httpPost.setHeader("Accept", "application/json");
         httpPost.setHeader("Content-type", "application/json");
 
-        Boolean result = false;
+        String result = "";
 
         try{
 
             Gson gson = new Gson();
 
-            httpPost.setEntity(new StringEntity(gson.toJson(user)));
+            String email = Security.md5( user.getEmail() );
+            String pwd = Security.md5( user.getPwd() );
+
+            String json = String.format("{\"email\":\"%s\",\"pwd\":\"%s\"}", email, pwd);
+
+            httpPost.setEntity(new StringEntity(json));
             HttpResponse httpResponse = defaultHttpClient.execute(httpPost);
 
             Map<String, String> jsonResponse = gson.fromJson(EntityUtils.toString(httpResponse.getEntity()), Map.class);
 
-            result = Boolean.parseBoolean(jsonResponse.get("feedback"));
+            String feedback = jsonResponse.get("feedback");
 
-            Log.d(WebServiceOperations.TAG_DEBUG, String.valueOf(jsonResponse.get("feedback")) );
+            if(feedback != "" && feedback.startsWith(Security.md5(WebServiceOperations.TOKEN_MAGIC_KEY))){
+
+                result = feedback;
+
+            }
+
+            Log.d(WebServiceOperations.TAG_DEBUG, feedback );
 
         }catch (Exception exception){
 
@@ -93,12 +105,13 @@ public class WebServiceOperations {
         }
 
         return result;
+
     }
 
-    public Boolean siteAdd(Site site){
+    public Boolean siteAdd(Site site, String loginUserToken){
 
         DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
-        HttpPut httpPut = new HttpPut(WebServiceOperations.URL_SITE__ADD_WEB_SERVICE);
+        HttpPut httpPut = new HttpPut(WebServiceOperations.URL_SITE_ADD_WEB_SERVICE);
 
         httpPut.setHeader("Accept", "application/json");
         httpPut.setHeader("Content-type", "application/json");
@@ -109,7 +122,11 @@ public class WebServiceOperations {
 
             Gson gson = new Gson();
 
-            httpPut.setEntity(new StringEntity(gson.toJson(site)));
+            String jsonSite = gson.toJson(site);
+
+            String stringF = String.format("{\"site\":%s,\"loginUserToken\":\"%s\"}", jsonSite, loginUserToken);
+
+            httpPut.setEntity(new StringEntity(stringF));
             HttpResponse httpResponse = defaultHttpClient.execute(httpPut);
 
             Map<String, String> jsonResponse = gson.fromJson(EntityUtils.toString(httpResponse.getEntity()), Map.class);
@@ -128,7 +145,7 @@ public class WebServiceOperations {
 
     }
 
-    public Boolean siteUpdate(Site site) {
+    public Boolean siteUpdate(Site site, String loginUserToken) {
 
         Log.d(WebServiceOperations.TAG_DEBUG, site.getName());
 

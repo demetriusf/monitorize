@@ -21,7 +21,7 @@ public class LoginDao extends SQLiteOpenHelper {
 
     private Context context;
     private final static String LOGIN_TABLE = "login";
-    private final static int VERSION = 1;
+    private final static int VERSION = 2;
 
     public LoginDao(Context context){
 
@@ -30,20 +30,19 @@ public class LoginDao extends SQLiteOpenHelper {
         this.context = context;
     }
 
-    public User getLogged(){
+    /**
+     * Return the token of the user's login.
+     * @return String
+     * */
+    public String getTokenUserLogged(){
 
-        User user = null;
+        Cursor cursor = getWritableDatabase().query(LoginDao.LOGIN_TABLE, new String[]{"token"}, null, null, null, null, null );
 
-        Cursor cursor = getWritableDatabase().query(LoginDao.LOGIN_TABLE, new String[]{"email", "pwd"}, null, null, null, null, null );
+        String token = null;
 
         if(cursor.moveToNext()){
 
-            String email = cursor.getString(0);
-            String pwd = cursor.getString(1);
-
-            user = new User();
-            user.setEmail(email);
-            user.setPwd(pwd);
+            token = cursor.getString(0);
 
         }
 
@@ -51,11 +50,11 @@ public class LoginDao extends SQLiteOpenHelper {
 
         getWritableDatabase().close();
 
-        return user;
+        return token;
 
     }
 
-    public boolean login( User user ){
+    public boolean login( String loginToken ){
 
         boolean userLogged = false;
 
@@ -66,8 +65,7 @@ public class LoginDao extends SQLiteOpenHelper {
 
             //Loga user
             ContentValues contentValues = new ContentValues();
-            contentValues.put("email", user.getEmail());
-            contentValues.put("pwd", user.getPwd());
+            contentValues.put("token", loginToken);
 
             getWritableDatabase().insertOrThrow(LoginDao.LOGIN_TABLE, null, contentValues);
             userLogged = true;
@@ -97,7 +95,7 @@ public class LoginDao extends SQLiteOpenHelper {
     @Override
     public void onCreate( SQLiteDatabase sqLiteDatabase ){
 
-        String sqlCreate = "CREATE TABLE %s( email TEXT UNIQUE NOT NULL, pwd TEXT NOT NULL );";
+        String sqlCreate = "CREATE TABLE %s( token TEXT UNIQUE NOT NULL);";
 
         sqLiteDatabase.execSQL(String.format(sqlCreate, LoginDao.LOGIN_TABLE));
 

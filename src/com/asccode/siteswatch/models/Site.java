@@ -11,18 +11,26 @@ import java.io.Serializable;
  */
 public class Site implements Serializable {
 
-    private User user;
+    private int id;
     private String name;
     private String url;
     private Boolean receiveNotification;
     private Boolean optPing;
 
-    public User getUser() {
-        return user;
+
+    @Override
+    public String toString(){
+
+        return String.format(this.getName());
+
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

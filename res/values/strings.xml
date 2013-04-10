@@ -11,6 +11,8 @@
     <!-- MENUS -->
     <string name="menuItemTitleLogout">Sair</string>
     <string name="menuItemTitleSiteAdd">Adicionar Site</string>
+    <string name="menuItemMainContextEdit">Editar</string>
+    <string name="menuItemMainContextRemove">Remover</string>
 
     <!-- BUTTONS -->
     <string name="btnCreateAccount" >Criar</string>
@@ -41,6 +43,8 @@
     <string name="fbAlertRegisteredSuccessfully">Cadastrado com sucesso</string>
     <string name="fbAlertFailLogin">Seu login falhou. Aguarde um momento e tente mais tarde</string>
     <string name="fbAlertSiteAddedSuccessfully">Site adicionado com sucesso</string>
+    <string name="fbAlertEmptySiteName">Nome não pode ser vazio!</string>
+    <string name="fbAlertEmptySiteUrl">Uma url válida deve ser passada!</string>
     <string name="fbDialogErrorTitleUserRegistration">Falhou!</string>
     <string name="fbDialogErrorBodyUserRegistration">Verifique a sua conexão com a internet</string>
     <string name="fbDialogErrorPositiveButtonUserRegistration">OK</string>
