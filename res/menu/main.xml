@@ -3,6 +3,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/menuItemSiteAdd" android:title="@string/menuItemTitleSiteAdd" />
+    <item android:id="@+id/menuItemRefreshList" android:title="@string/menuItemTitleRefreshList" />
     <item android:id="@+id/menuItemLogout" android:title="@string/menuItemTitleLogout"/>
 
 </menu>

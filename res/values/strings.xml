@@ -11,6 +11,7 @@
     <!-- MENUS -->
     <string name="menuItemTitleLogout">Sair</string>
     <string name="menuItemTitleSiteAdd">Adicionar Site</string>
+    <string name="menuItemTitleRefreshList">Atualizar</string>
     <string name="menuItemMainContextEdit">Editar</string>
     <string name="menuItemMainContextRemove">Remover</string>
 
@@ -35,6 +36,8 @@
     <string name="dialogBodyAuthUser">Seu login está sendo finalizado</string>
     <string name="dialogTitleSiteAdd">Aguarde...</string>
     <string name="dialogBodySiteAdd">Site sendo adicionado</string>
+    <string name="dialogTitleSiteList">Aguarde...</string>
+    <string name="dialogBodySiteList">Conectando-se com o servidor</string>
 
     <!-- FEEDBACK -->
     <string name="fbAlertEmptyEmail">E-mail deve ser válido</string>
@@ -54,8 +57,12 @@
     <string name="fbDialogErrorTitleUserLogin">Falhou!</string>
     <string name="fbDialogErrorBodyUserLogin">Seu login falhou. Aguarde um momento e tente mais tarde</string>
     <string name="fbDialogErrorPositiveButtonUserLogin">OK</string>
-    <string name="fbDialogErrorTitleSiteAdded">Falhou!</string>
-    <string name="fbDialogErrorBodySiteAdded">Não foi possível adicionar o site. Verifique a sua conexão com a internet!</string>
-    <string name="fbDialogErrorPositiveButtonSiteAdded">OK</string>
+    <string name="fbDialogErrorTitleSiteAdd">Falhou!</string>
+    <string name="fbDialogErrorBodySiteAdd">Não foi possível adicionar o site. Verifique a sua conexão com a internet!</string>
+    <string name="fbDialogErrorPositiveButtonSiteAdd">OK</string>
+    <string name="fbDialogErrorTitleSiteList">Falhou!</string>
+    <string name="fbDialogErrorBodySiteList">Não foi possível se conectar com o servidor. Verifique a sua conexão com a internet!</string>
+    <string name="fbDialogErrorPositiveButtonSiteList">Tentar Novamente</string>
+    <string name="fbDialogErrorNegativeButtonSiteList">Sair do aplicativo</string>
 
 </resources>

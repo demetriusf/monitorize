@@ -1,5 +1,7 @@
 package com.asccode.siteswatch.telas;
 
+import com.asccode.siteswatch.dao.LoginDao;
+import com.asccode.siteswatch.models.Site;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.asccode.siteswatch.task.SiteListTask;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,7 +28,10 @@ import android.widget.Toast;
 public class Main extends Activity {
 
     private ListView listView;
+    private ArrayAdapter<String> adapter;
+    private List<Site> sites = new ArrayList<Site>();
     private static final String TAG_DEBUG = "MAIN";
+    private static final int REQUEST_CODE_ACTIVITY_SITE = 1;
 
     public void onCreate(Bundle savedInstanceState) {
 
@@ -34,13 +43,31 @@ public class Main extends Activity {
 
             this.listView  = (ListView) findViewById(R.id.listSites);
 
-            ArrayAdapter<String> sites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"Tem Estilo", "Carrapeta", "Jackie", "Asccode", "Olhar Criativo"});
+            this.adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, this.getSites() );
 
-            this.listView.setAdapter(sites);
+            this.listView.setAdapter(adapter);
 
             registerForContextMenu(this.listView);
 
+            this.recoverySites();
+
         }
+
+    }
+
+    public List<Site> getSites() {
+        return sites;
+    }
+
+    public void refreshList(){
+
+        this.adapter.notifyDataSetChanged();
+
+    }
+
+    private void recoverySites(){
+
+        new SiteListTask(new LoginDao(this).getTokenUserLogged(), this).execute();
 
     }
 
@@ -77,7 +104,11 @@ public class Main extends Activity {
                 break;
 
             case R.id.menuItemSiteAdd:
-                startActivity(new Intent(this, Site.class));
+                startActivityForResult(new Intent(this, com.asccode.siteswatch.telas.Site.class), Main.REQUEST_CODE_ACTIVITY_SITE);
+                break;
+
+            case R.id.menuItemRefreshList:
+                this.recoverySites();
                 break;
 
             default:
@@ -109,5 +140,21 @@ public class Main extends Activity {
         }
 
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if( requestCode == Main.REQUEST_CODE_ACTIVITY_SITE ){
+
+            if( resultCode == RESULT_OK ){
+
+                this.recoverySites();
+
+            }
+
+        }
+
+
     }
 }

@@ -55,16 +55,17 @@ public class SiteAddTask extends AsyncTask<Object, Object, Boolean> {
 
             Toast.makeText(this.context, this.context.getString(R.string.fbAlertSiteAddedSuccessfully), Toast.LENGTH_LONG).show();
 
-            ((Activity) this.context).finish();
+            ((com.asccode.siteswatch.telas.Site) this.context).setResult(Activity.RESULT_OK);
+            ((com.asccode.siteswatch.telas.Site) this.context).finish();
 
         }else{
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
             builder.setCancelable(true);
             builder.setIcon(android.R.drawable.ic_dialog_alert);
-            builder.setTitle(this.context.getString(R.string.fbDialogErrorTitleSiteAdded));
-            builder.setMessage(this.context.getString(R.string.fbDialogErrorBodySiteAdded));
-            builder.setPositiveButton(this.context.getString(R.string.fbDialogErrorPositiveButtonSiteAdded), null);
+            builder.setTitle(this.context.getString(R.string.fbDialogErrorTitleSiteAdd));
+            builder.setMessage(this.context.getString(R.string.fbDialogErrorBodySiteAdd));
+            builder.setPositiveButton(this.context.getString(R.string.fbDialogErrorPositiveButtonSiteAdd), null);
             builder.show();
 
         }
