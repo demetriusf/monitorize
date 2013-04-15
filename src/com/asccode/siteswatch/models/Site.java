@@ -13,15 +13,21 @@ public class Site implements Serializable {
 
     private int id;
     private String name;
-    private String url;
-    private Boolean receiveNotification;
+    private String endereco;
+    private Boolean receiveAndroidNotification;
     private Boolean optPing;
-
 
     @Override
     public String toString(){
 
         return String.format(this.getName());
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        return ((Site) o).getId() == this.getId() && ((Site) o).getId() != 0;
 
     }
 
@@ -41,20 +47,20 @@ public class Site implements Serializable {
         this.name = name;
     }
 
-    public String getUrl() {
-        return url;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setEndereco(String url) {
+        this.endereco = url;
     }
 
-    public Boolean getReceiveNotification() {
-        return receiveNotification;
+    public Boolean getReceiveAndroidNotification() {
+        return receiveAndroidNotification;
     }
 
-    public void setReceiveNotification(Boolean receiveNotification) {
-        this.receiveNotification = receiveNotification;
+    public void setReceiveAndroidNotification(Boolean receiveAndroidNotification) {
+        this.receiveAndroidNotification = receiveAndroidNotification;
     }
 
     public Boolean getOptPing() {

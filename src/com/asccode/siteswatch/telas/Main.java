@@ -1,5 +1,6 @@
 package com.asccode.siteswatch.telas;
 
+import android.widget.AdapterView;
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.models.Site;
 import android.app.Activity;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.asccode.siteswatch.task.SiteDeleteTask;
 import com.asccode.siteswatch.task.SiteListTask;
 
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ public class Main extends Activity {
     private ListView listView;
     private ArrayAdapter<String> adapter;
     private List<Site> sites = new ArrayList<Site>();
+    private Site selectedSite;
     private static final String TAG_DEBUG = "MAIN";
     private static final int REQUEST_CODE_ACTIVITY_SITE = 1;
 
@@ -47,7 +50,21 @@ public class Main extends Activity {
 
             this.listView.setAdapter(adapter);
 
-            registerForContextMenu(this.listView);
+            this.listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    selectedSite = (Site) adapterView.getItemAtPosition(i);
+
+                    registerForContextMenu(Main.this.listView);
+
+                    return false;  //To change body of implemented methods use File | Settings | File Templates.
+
+                }
+
+
+            });
+
 
             this.recoverySites();
 
@@ -133,8 +150,19 @@ public class Main extends Activity {
         switch( item.getItemId() ){
 
             case R.id.menuItemMainContextEdit:
+
                 Toast.makeText( this, "Editar", Toast.LENGTH_LONG ).show();
                 break;
+
+            case R.id.menuItemMainContextRemove:
+
+                if( this.selectedSite != null ){
+
+                    new SiteDeleteTask(this.selectedSite, this).execute();
+
+                }
+                break;
+
             default:
                 Log.d(Main.TAG_DEBUG, "ANY EVENT IS ASSOCIATED WITH THE CONTEXT MENU ITEM: "+item.getTitle().toString());
         }
@@ -145,9 +173,9 @@ public class Main extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if( requestCode == Main.REQUEST_CODE_ACTIVITY_SITE ){
+        if( resultCode == RESULT_OK ){
 
-            if( resultCode == RESULT_OK ){
+            if( requestCode == Main.REQUEST_CODE_ACTIVITY_SITE ){
 
                 this.recoverySites();
 

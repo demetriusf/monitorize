@@ -39,7 +39,7 @@ public class SiteUpdateTask extends AsyncTask<Object, Object, Boolean> {
     @Override
     protected Boolean doInBackground(Object... objects) {
 
-        return new WebServiceOperations().siteUpdate(this.site, this.loginUserToken);
+        return new WebServiceOperations().siteUpdate(this.site);
 
     }
 

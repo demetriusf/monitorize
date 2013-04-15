@@ -4,7 +4,8 @@
 
     <!-- LABELS -->
     <string name="labelCreateAccount">Não possui uma conta?</string>
-    <string name="labelSiteReceiveNotification">Receber Notificação</string>
+    <string name="labelSiteNotifyVia">Ser notificado por</string>
+    <string name="labelSiteReceiveAndroidNotification">Android</string>
     <string name="labelSiteOptions">Verificações</string>
     <string name="labelSitePingOption">Ping</string>
 
@@ -27,17 +28,19 @@
     <string name="hintPwd">Senha</string>
     <string name="hintRePwd">Confirmar senha</string>
     <string name="hintSiteName">Nome</string>
-    <string name="hintSiteUrl">http://</string>
+    <string name="hintSiteEndereco">Url/Ip</string>
 
     <!-- PROGRESS DIALOGS -->
     <string name="dialogTitleRegisterUser">Aguarde...</string>
     <string name="dialogBodyRegisterUser">Seu cadastro está sendo finalizado</string>
     <string name="dialogTitleAuthUser">Aguarde...</string>
     <string name="dialogBodyAuthUser">Seu login está sendo finalizado</string>
-    <string name="dialogTitleSiteAdd">Aguarde...</string>
-    <string name="dialogBodySiteAdd">Site sendo adicionado</string>
     <string name="dialogTitleSiteList">Aguarde...</string>
     <string name="dialogBodySiteList">Conectando-se com o servidor</string>
+    <string name="dialogTitleSiteAdd">Aguarde...</string>
+    <string name="dialogBodySiteAdd">Site sendo adicionado</string>
+    <string name="dialogTitleSiteDelete">Aguarde...</string>
+    <string name="dialogBodySiteDelete">Site sendo deletado</string>
 
     <!-- FEEDBACK -->
     <string name="fbAlertEmptyEmail">E-mail deve ser válido</string>
@@ -46,8 +49,9 @@
     <string name="fbAlertRegisteredSuccessfully">Cadastrado com sucesso</string>
     <string name="fbAlertFailLogin">Seu login falhou. Aguarde um momento e tente mais tarde</string>
     <string name="fbAlertSiteAddedSuccessfully">Site adicionado com sucesso</string>
+    <string name="fbAlertSiteDeletedSuccessfully">Site deletado com sucesso</string>
     <string name="fbAlertEmptySiteName">Nome não pode ser vazio!</string>
-    <string name="fbAlertEmptySiteUrl">Uma url válida deve ser passada!</string>
+    <string name="fbAlertEmptySiteEndereco">Um endereço válido (url/ip) deve ser passado!</string>
     <string name="fbDialogErrorTitleUserRegistration">Falhou!</string>
     <string name="fbDialogErrorBodyUserRegistration">Verifique a sua conexão com a internet</string>
     <string name="fbDialogErrorPositiveButtonUserRegistration">OK</string>
@@ -63,6 +67,8 @@
     <string name="fbDialogErrorTitleSiteList">Falhou!</string>
     <string name="fbDialogErrorBodySiteList">Não foi possível se conectar com o servidor. Verifique a sua conexão com a internet!</string>
     <string name="fbDialogErrorPositiveButtonSiteList">Tentar Novamente</string>
-    <string name="fbDialogErrorNegativeButtonSiteList">Sair do aplicativo</string>
+    <string name="fbDialogErrorTitleSiteDelete">Falhou!</string>
+    <string name="fbDialogErrorBodySiteDelete">Não foi possível deletar o site. Verifique a sua conexão com a internet!</string>
+    <string name="fbDialogErrorPositiveButtonSiteDelete">OK</string>
 
 </resources>

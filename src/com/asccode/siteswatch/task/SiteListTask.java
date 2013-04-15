@@ -2,9 +2,7 @@ package com.asccode.siteswatch.task;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
-import android.widget.Toast;
 import com.asccode.siteswatch.models.Site;
 import com.asccode.siteswatch.support.WebServiceOperations;
 import com.asccode.siteswatch.telas.Main;

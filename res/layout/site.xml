@@ -7,17 +7,6 @@
               android:background="@drawable/gradiente_principal"
         >
 
-
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/icon"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-
-            />
-
     <EditText
             android:id="@+id/editTextNomeSite"
             android:layout_width="fill_parent"
@@ -26,11 +15,25 @@
             />
 
     <EditText
-            android:id="@+id/editTextUrl"
+            android:id="@+id/editTextEndereco"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hintSiteUrl"
+            android:hint="@string/hintSiteEndereco"
             android:inputType="textUri"
+            />
+
+    <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/white"
+            android:layout_marginTop="20dp"
+            />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/labelSiteNotifyVia"
+            android:textSize="18sp"
             />
 
     <LinearLayout
@@ -39,17 +42,17 @@
             android:orientation="horizontal"
             >
 
+        <CheckBox
+                android:id="@+id/checkBoxReceiveAndroidNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/labelSiteReceiveNotification"
+                android:text="@string/labelSiteReceiveAndroidNotification"
                 android:textSize="17sp"
-                />
-
-        <CheckBox
-                android:id="@+id/checkBoxReceiveNotification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 />
 
     </LinearLayout>
@@ -74,17 +77,17 @@
             android:orientation="horizontal"
             >
 
+        <CheckBox
+                android:id="@+id/checkBoxOptPing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/labelSitePingOption"
                 android:textSize="17sp"
-                />
-
-        <CheckBox
-                android:id="@+id/checkBoxOptPing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 />
 
     </LinearLayout>

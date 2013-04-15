@@ -13,12 +13,12 @@ import java.security.NoSuchAlgorithmException;
 public class Security {
 
 
-    private static byte[] generateMD5(String from) {
+    private static byte[] generateMD5(Object from) {
 
         try {
 
             MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(from.getBytes());
+            md.update(from.toString().getBytes());
 
             return md.digest();
 
@@ -30,7 +30,7 @@ public class Security {
 
     }
 
-    public static String md5(String from) {
+    public static String md5(Object from) {
 
         byte[] bytes = Security.generateMD5(from);
 

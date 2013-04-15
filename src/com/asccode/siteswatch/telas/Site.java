@@ -9,9 +9,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.asccode.siteswatch.dao.LoginDao;
-import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.task.SiteAddTask;
 import com.asccode.siteswatch.task.SiteUpdateTask;
+import org.apache.http.conn.util.InetAddressUtils;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,8 +23,8 @@ import com.asccode.siteswatch.task.SiteUpdateTask;
 public class Site extends Activity {
 
     private EditText editTextNomeSite;
-    private EditText editTextUrl;
-    private CheckBox checkBoxReceiveNotification;
+    private EditText editTextEndereco;
+    private CheckBox checkBoxReceiveAndroidNotification;
     private CheckBox checkBoxOptPing;
     private Button button;
     private com.asccode.siteswatch.models.Site site;
@@ -37,8 +37,8 @@ public class Site extends Activity {
         setContentView(R.layout.site);
 
         this.editTextNomeSite = (EditText) findViewById(R.id.editTextNomeSite);
-        this.editTextUrl = (EditText) findViewById(R.id.editTextUrl);
-        this.checkBoxReceiveNotification = (CheckBox) findViewById(R.id.checkBoxReceiveNotification);
+        this.editTextEndereco = (EditText) findViewById(R.id.editTextEndereco);
+        this.checkBoxReceiveAndroidNotification = (CheckBox) findViewById(R.id.checkBoxReceiveAndroidNotification);
         this.checkBoxOptPing = (CheckBox) findViewById(R.id.checkBoxOptPing);
         this.button = (Button) findViewById(R.id.button);
 
@@ -47,8 +47,8 @@ public class Site extends Activity {
         if(this.site != null){
 
             this.editTextNomeSite.setText(this.site.getName());
-            this.editTextUrl.setText(this.site.getUrl());
-            this.checkBoxReceiveNotification.setChecked(this.site.getReceiveNotification());
+            this.editTextEndereco.setText(this.site.getEndereco());
+            this.checkBoxReceiveAndroidNotification.setChecked(this.site.getReceiveAndroidNotification());
             this.checkBoxOptPing.setChecked(this.site.getOptPing());
             this.button.setText(getString(R.string.btnSiteUpdate));
             this.opAdd = false;
@@ -64,8 +64,8 @@ public class Site extends Activity {
             public void onClick(View view) {
 
                 site.setName(editTextNomeSite.getEditableText().toString());
-                site.setUrl(editTextUrl.getEditableText().toString());
-                site.setReceiveNotification(checkBoxReceiveNotification.isChecked());
+                site.setEndereco(editTextEndereco.getEditableText().toString());
+                site.setReceiveAndroidNotification(checkBoxReceiveAndroidNotification.isChecked());
                 site.setOptPing(checkBoxOptPing.isChecked());
 
                 if( isValidSite( site ) ){
@@ -95,9 +95,9 @@ public class Site extends Activity {
 
             return false;
 
-        }else if( !URLUtil.isValidUrl( site.getUrl() ) ){
+        }else if( !URLUtil.isValidUrl( site.getEndereco() ) && !InetAddressUtils.isIPv4Address(site.getEndereco()) ){
 
-            Toast.makeText(this, getString(R.string.fbAlertEmptySiteUrl), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.fbAlertEmptySiteEndereco), Toast.LENGTH_LONG).show();
 
             return false;
 

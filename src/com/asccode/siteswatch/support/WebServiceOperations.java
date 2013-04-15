@@ -7,6 +7,7 @@ import com.asccode.siteswatch.telas.Main;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
@@ -14,6 +15,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -164,7 +166,9 @@ public class WebServiceOperations {
             httpPut.setEntity(new StringEntity(stringF));
             HttpResponse httpResponse = defaultHttpClient.execute(httpPut);
 
-            Map<String, String> jsonResponse = gson.fromJson(EntityUtils.toString(httpResponse.getEntity()), Map.class);
+            String responseEntity = EntityUtils.toString(httpResponse.getEntity());
+
+            Map<String, String> jsonResponse = gson.fromJson(responseEntity, Map.class);
 
             result = Boolean.parseBoolean(jsonResponse.get("feedback"));
 
@@ -180,11 +184,45 @@ public class WebServiceOperations {
 
     }
 
-    public Boolean siteUpdate(Site site, String loginUserToken) {
+    public Boolean siteUpdate(Site site) {
 
         Log.d(WebServiceOperations.TAG_DEBUG, site.getName());
 
         return true;
+
+    }
+
+    public Boolean siteDelete( Site site ){
+
+        String queryString = String.format("/identifier/%s", Security.md5( site.getId() ));
+
+        DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
+        HttpDelete httpDelete = new HttpDelete(WebServiceOperations.URL_SITE_WEB_SERVICE+queryString);
+
+        httpDelete.setHeader("Accept", "application/json");
+        httpDelete.setHeader("Content-type", "application/json");
+
+        Boolean result = false;
+
+        try {
+
+            Gson gson = new Gson();
+
+            HttpResponse httpResponse = defaultHttpClient.execute(httpDelete);
+
+            String responseEntity = EntityUtils.toString(httpResponse.getEntity());
+
+            Map<String, String> jsonResponse = gson.fromJson(responseEntity, Map.class);
+
+            result = Boolean.parseBoolean(jsonResponse.get("feedback"));
+
+        } catch (Exception exception) {
+
+            Log.e(WebServiceOperations.TAG_DEBUG, exception.getMessage());
+
+        }
+
+        return result;
 
     }
 }
