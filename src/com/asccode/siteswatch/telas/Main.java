@@ -151,7 +151,15 @@ public class Main extends Activity {
 
             case R.id.menuItemMainContextEdit:
 
-                Toast.makeText( this, "Editar", Toast.LENGTH_LONG ).show();
+                if( this.selectedSite != null ){
+
+                    Intent intent = new Intent(this, com.asccode.siteswatch.telas.Site.class);
+                    intent.putExtra("site", this.selectedSite);
+
+                    startActivityForResult(intent, Main.REQUEST_CODE_ACTIVITY_SITE);
+                    break;
+
+                }
                 break;
 
             case R.id.menuItemMainContextRemove:

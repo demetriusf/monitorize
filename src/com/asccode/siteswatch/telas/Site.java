@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.URLUtil;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.*;
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.task.SiteAddTask;
+import com.asccode.siteswatch.task.SiteGetTask;
 import com.asccode.siteswatch.task.SiteUpdateTask;
 import org.apache.http.conn.util.InetAddressUtils;
 
@@ -22,6 +20,7 @@ import org.apache.http.conn.util.InetAddressUtils;
  */
 public class Site extends Activity {
 
+    private TextView editTextsiteTextLoading;
     private EditText editTextNomeSite;
     private EditText editTextEndereco;
     private CheckBox checkBoxReceiveAndroidNotification;
@@ -36,6 +35,7 @@ public class Site extends Activity {
 
         setContentView(R.layout.site);
 
+        this.editTextsiteTextLoading = (TextView) findViewById(R.id.editTextsiteTextLoading);
         this.editTextNomeSite = (EditText) findViewById(R.id.editTextNomeSite);
         this.editTextEndereco = (EditText) findViewById(R.id.editTextEndereco);
         this.checkBoxReceiveAndroidNotification = (CheckBox) findViewById(R.id.checkBoxReceiveAndroidNotification);
@@ -46,12 +46,15 @@ public class Site extends Activity {
 
         if(this.site != null){
 
-            this.editTextNomeSite.setText(this.site.getName());
-            this.editTextEndereco.setText(this.site.getEndereco());
-            this.checkBoxReceiveAndroidNotification.setChecked(this.site.getReceiveAndroidNotification());
-            this.checkBoxOptPing.setChecked(this.site.getOptPing());
-            this.button.setText(getString(R.string.btnSiteUpdate));
             this.opAdd = false;
+
+            this.button.setText(getString(R.string.btnSiteUpdate));
+
+            this.updateFieldsWithSiteValues();
+
+            this.disableFields();
+
+            new SiteGetTask(this).execute(this.site);
 
         }else{
 
@@ -84,6 +87,39 @@ public class Site extends Activity {
 
             }
         });
+
+    }
+
+    public void updateFieldsWithSiteValues(){
+
+        this.editTextNomeSite.setText(this.site.getName());
+        this.editTextEndereco.setText(this.site.getEndereco());
+        this.checkBoxReceiveAndroidNotification.setChecked(this.site.getReceiveAndroidNotification());
+        this.checkBoxOptPing.setChecked(this.site.getOptPing());
+
+    }
+
+    public void disableFields(){
+
+        this.editTextNomeSite.setEnabled(false);
+        this.editTextEndereco.setEnabled(false);
+        this.checkBoxReceiveAndroidNotification.setEnabled(false);
+        this.checkBoxOptPing.setEnabled(false);
+        this.button.setEnabled(false);
+
+        this.editTextsiteTextLoading.setVisibility(1); // Show load
+
+    }
+
+    public void enableFields(){
+
+        this.editTextNomeSite.setEnabled(true);
+        this.editTextEndereco.setEnabled(true);
+        this.checkBoxReceiveAndroidNotification.setEnabled(true);
+        this.checkBoxOptPing.setEnabled(true);
+        this.button.setEnabled(true);
+
+        this.editTextsiteTextLoading.setVisibility(0); // Hide load
 
     }
 
