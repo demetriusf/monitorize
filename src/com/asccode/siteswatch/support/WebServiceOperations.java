@@ -145,6 +145,38 @@ public class WebServiceOperations {
 
     }
 
+    public Site siteGet(Site site, String loginUserToken) {
+
+        String queryString = String.format("/identifier/%s/loginUserToken/%s", Security.md5( site.getId() ), loginUserToken );
+
+        DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet(WebServiceOperations.URL_SITE_WEB_SERVICE+queryString);
+
+        httpGet.setHeader("Accept", "application/json");
+        httpGet.setHeader("Content-type", "application/json");
+
+        Site siteReturn = null;
+
+        try {
+
+            Gson gson = new Gson();
+
+            HttpResponse httpResponse = defaultHttpClient.execute(httpGet);
+
+            String jsonResponse = EntityUtils.toString(httpResponse.getEntity());
+
+            siteReturn = gson.fromJson(jsonResponse, Site.class);
+
+        } catch (Exception exception) {
+
+            Log.e(WebServiceOperations.TAG_DEBUG, exception.getMessage());
+
+        }
+
+        return siteReturn;
+
+    }
+
     public Boolean siteAdd(Site site, String loginUserToken){
 
         DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
@@ -184,11 +216,42 @@ public class WebServiceOperations {
 
     }
 
-    public Boolean siteUpdate(Site site) {
+    public Boolean siteUpdate(Site site, String loginUserToken) {
 
-        Log.d(WebServiceOperations.TAG_DEBUG, site.getName());
 
-        return true;
+        DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(WebServiceOperations.URL_SITE_WEB_SERVICE);
+
+        httpPost.setHeader("Accept", "application/json");
+        httpPost.setHeader("Content-type", "application/json");
+
+        Boolean result = false;
+
+        try {
+
+            Gson gson = new Gson();
+
+            String jsonSite = gson.toJson(site);
+
+            String stringF = String.format("{\"site\":%s,\"loginUserToken\":\"%s\"}", jsonSite, loginUserToken);
+
+            httpPost.setEntity(new StringEntity(stringF));
+
+            HttpResponse httpResponse = defaultHttpClient.execute(httpPost);
+
+            String responseJson = EntityUtils.toString(httpResponse.getEntity());
+
+            Map<String, String> jsonResponse = gson.fromJson(responseJson, Map.class) ;
+
+            result = Boolean.parseBoolean(jsonResponse.get("feedback"));
+
+        } catch (Exception e) {
+
+            Log.e(WebServiceOperations.TAG_DEBUG, e.getMessage());
+
+        }
+
+        return result;
 
     }
 

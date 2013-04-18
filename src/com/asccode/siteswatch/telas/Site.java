@@ -7,9 +7,11 @@ import android.webkit.URLUtil;
 import android.widget.*;
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.task.SiteAddTask;
-import com.asccode.siteswatch.task.SiteGetTask;
+import com.asccode.siteswatch.task.SiteRefreshDataEditTask;
 import com.asccode.siteswatch.task.SiteUpdateTask;
 import org.apache.http.conn.util.InetAddressUtils;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,7 +22,6 @@ import org.apache.http.conn.util.InetAddressUtils;
  */
 public class Site extends Activity {
 
-    private TextView editTextsiteTextLoading;
     private EditText editTextNomeSite;
     private EditText editTextEndereco;
     private CheckBox checkBoxReceiveAndroidNotification;
@@ -28,6 +29,7 @@ public class Site extends Activity {
     private Button button;
     private com.asccode.siteswatch.models.Site site;
     private boolean opAdd = true;
+    private Timer timer = new Timer();
 
     public void onCreate(Bundle savedInstanceState) {
 
@@ -35,16 +37,15 @@ public class Site extends Activity {
 
         setContentView(R.layout.site);
 
-        this.editTextsiteTextLoading = (TextView) findViewById(R.id.editTextsiteTextLoading);
         this.editTextNomeSite = (EditText) findViewById(R.id.editTextNomeSite);
         this.editTextEndereco = (EditText) findViewById(R.id.editTextEndereco);
         this.checkBoxReceiveAndroidNotification = (CheckBox) findViewById(R.id.checkBoxReceiveAndroidNotification);
         this.checkBoxOptPing = (CheckBox) findViewById(R.id.checkBoxOptPing);
         this.button = (Button) findViewById(R.id.button);
 
-        this.site = (com.asccode.siteswatch.models.Site) getIntent().getSerializableExtra("site");
+        this.setSite( (com.asccode.siteswatch.models.Site) getIntent().getSerializableExtra("site") );
 
-        if(this.site != null){
+        if(this.getSite() != null){
 
             this.opAdd = false;
 
@@ -52,13 +53,30 @@ public class Site extends Activity {
 
             this.updateFieldsWithSiteValues();
 
-            this.disableFields();
+            final boolean requestSuccessfully = false;
 
-            new SiteGetTask(this).execute(this.site);
+            final SiteRefreshDataEditTask siteRefreshDataEditTask = new SiteRefreshDataEditTask(new LoginDao(this).getTokenUserLogged(), this, requestSuccessfully);
+            siteRefreshDataEditTask.execute();
+
+            timer.schedule(new TimerTask() {
+
+                @Override
+                public void run() {
+
+                    if( !requestSuccessfully ){
+
+                        siteRefreshDataEditTask.cancel(true);
+                        siteRefreshDataEditTask.getProgressDialog().dismiss();
+
+                    }
+
+                }
+
+            }, 6000);
 
         }else{
 
-            this.site = new com.asccode.siteswatch.models.Site();
+            this.setSite(new com.asccode.siteswatch.models.Site());
 
         }
 
@@ -66,10 +84,10 @@ public class Site extends Activity {
             @Override
             public void onClick(View view) {
 
-                site.setName(editTextNomeSite.getEditableText().toString());
-                site.setEndereco(editTextEndereco.getEditableText().toString());
-                site.setReceiveAndroidNotification(checkBoxReceiveAndroidNotification.isChecked());
-                site.setOptPing(checkBoxOptPing.isChecked());
+                getSite().setName(editTextNomeSite.getEditableText().toString());
+                getSite().setEndereco(editTextEndereco.getEditableText().toString());
+                getSite().setReceiveAndroidNotification(checkBoxReceiveAndroidNotification.isChecked());
+                getSite().setOptPing(checkBoxOptPing.isChecked());
 
                 if( isValidSite( site ) ){
 
@@ -90,36 +108,23 @@ public class Site extends Activity {
 
     }
 
+
+    public com.asccode.siteswatch.models.Site getSite() {
+
+        return this.site;
+
+    }
+
+    public void setSite(com.asccode.siteswatch.models.Site site) {
+        this.site = site;
+    }
+
     public void updateFieldsWithSiteValues(){
 
-        this.editTextNomeSite.setText(this.site.getName());
-        this.editTextEndereco.setText(this.site.getEndereco());
-        this.checkBoxReceiveAndroidNotification.setChecked(this.site.getReceiveAndroidNotification());
-        this.checkBoxOptPing.setChecked(this.site.getOptPing());
-
-    }
-
-    public void disableFields(){
-
-        this.editTextNomeSite.setEnabled(false);
-        this.editTextEndereco.setEnabled(false);
-        this.checkBoxReceiveAndroidNotification.setEnabled(false);
-        this.checkBoxOptPing.setEnabled(false);
-        this.button.setEnabled(false);
-
-        this.editTextsiteTextLoading.setVisibility(1); // Show load
-
-    }
-
-    public void enableFields(){
-
-        this.editTextNomeSite.setEnabled(true);
-        this.editTextEndereco.setEnabled(true);
-        this.checkBoxReceiveAndroidNotification.setEnabled(true);
-        this.checkBoxOptPing.setEnabled(true);
-        this.button.setEnabled(true);
-
-        this.editTextsiteTextLoading.setVisibility(0); // Hide load
+        this.editTextNomeSite.setText(this.getSite().getName());
+        this.editTextEndereco.setText(this.getSite().getEndereco());
+        this.checkBoxReceiveAndroidNotification.setChecked(this.getSite().getReceiveAndroidNotification());
+        this.checkBoxOptPing.setChecked(this.getSite().getOptPing());
 
     }
 

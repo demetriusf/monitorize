@@ -1,10 +1,13 @@
 package com.asccode.siteswatch.task;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import com.asccode.siteswatch.models.Site;
 import com.asccode.siteswatch.support.WebServiceOperations;
+import com.asccode.siteswatch.telas.R;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,15 +34,15 @@ public class SiteUpdateTask extends AsyncTask<Object, Object, Boolean> {
     @Override
     protected void onPreExecute(){
 
-        this.progressDialog = new ProgressDialog(this.context);
-        this.progressDialog.show();
+        this.progressDialog = ProgressDialog.show(this.context, this.context.getString(R.string.dialogTitleSiteAdd), this.context.getString(R.string.dialogBodySiteAdd), true, true);
+
 
     }
 
     @Override
     protected Boolean doInBackground(Object... objects) {
 
-        return new WebServiceOperations().siteUpdate(this.site);
+        return new WebServiceOperations().siteUpdate(this.site, this.loginUserToken);
 
     }
 
@@ -48,7 +51,20 @@ public class SiteUpdateTask extends AsyncTask<Object, Object, Boolean> {
 
         this.progressDialog.dismiss();
 
-        if( result ){
+        if(result){
+
+            ((com.asccode.siteswatch.telas.Site) this.context).setResult(Activity.RESULT_OK);
+            ((com.asccode.siteswatch.telas.Site) this.context).finish();
+
+        }else{
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
+            builder.setCancelable(true);
+            builder.setIcon(android.R.drawable.ic_dialog_alert);
+            builder.setTitle(this.context.getString(R.string.fbDialogErrorTitleSiteAdd));
+            builder.setMessage(this.context.getString(R.string.fbDialogErrorBodySiteAdd));
+            builder.setPositiveButton(this.context.getString(R.string.fbDialogErrorPositiveButtonSiteAdd), null);
+            builder.show();
 
         }
 

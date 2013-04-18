@@ -53,8 +53,6 @@ public class SiteAddTask extends AsyncTask<Object, Object, Boolean> {
 
         if(result){
 
-            //Toast.makeText(this.context, this.context.getString(R.string.fbAlertSiteAddedSuccessfully), Toast.LENGTH_LONG).show();
-
             ((com.asccode.siteswatch.telas.Site) this.context).setResult(Activity.RESULT_OK);
             ((com.asccode.siteswatch.telas.Site) this.context).finish();
 
