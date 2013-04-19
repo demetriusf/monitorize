@@ -30,9 +30,10 @@ import java.util.Map;
 public class WebServiceOperations {
 
     private static final String TAG_DEBUG = "WEBSERVICE";
-    private static final String URL_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/user";
-    private static final String URL_AUTHENTICATION_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/auth/user";
-    private static final String URL_SITE_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/site";
+    private static final String URL_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch/webservice/user";
+    private static final String URL_AUTHENTICATION_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch/webservice/auth/user";
+    private static final String URL_SITE_WEB_SERVICE = "http://10.0.2.2/sites-watch/webservice/site";
+    private static final String URL_GCM_WEB_SERVICE = "http://10.0.2.2/sites-watch/webservice/gcm";
     private static final String TOKEN_MAGIC_KEY = "5I735_W47CH~";
 
     public Boolean registerUser(User user){
@@ -288,4 +289,42 @@ public class WebServiceOperations {
         return result;
 
     }
+
+    public Boolean registerUserGCM(String regId, String loginUserToken){
+
+        DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
+        HttpPut httpPut = new HttpPut(WebServiceOperations.URL_GCM_WEB_SERVICE);
+
+        httpPut.setHeader("Accept", "application/json");
+        httpPut.setHeader("Content-type", "application/json");
+
+        Boolean result = false;
+
+        try {
+
+            Gson gson = new Gson();
+
+            String stringF = String.format("{\"regId\":%s,\"loginUserToken\":\"%s\"}", regId, loginUserToken);
+
+            httpPut.setEntity(new StringEntity(stringF));
+            HttpResponse httpResponse = defaultHttpClient.execute(httpPut);
+
+            String responseEntity = EntityUtils.toString(httpResponse.getEntity());
+
+            Map<String, String> jsonResponse = gson.fromJson(responseEntity, Map.class);
+
+            result = Boolean.parseBoolean(jsonResponse.get("feedback"));
+
+            Log.v(WebServiceOperations.TAG_DEBUG, String.valueOf(jsonResponse.get("feedback")) );
+
+        } catch (Exception exception) {
+
+            Log.e(WebServiceOperations.TAG_DEBUG, exception.getMessage());
+
+        }
+
+        return result;
+
+    }
+
 }

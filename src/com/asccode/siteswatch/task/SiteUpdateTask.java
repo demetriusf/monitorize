@@ -34,7 +34,7 @@ public class SiteUpdateTask extends AsyncTask<Object, Object, Boolean> {
     @Override
     protected void onPreExecute(){
 
-        this.progressDialog = ProgressDialog.show(this.context, this.context.getString(R.string.dialogTitleSiteAdd), this.context.getString(R.string.dialogBodySiteAdd), true, true);
+        this.progressDialog = ProgressDialog.show(this.context, this.context.getString(R.string.dialogTitleSiteUpdate), this.context.getString(R.string.dialogBodySiteUpdate), true, true);
 
 
     }
@@ -61,9 +61,9 @@ public class SiteUpdateTask extends AsyncTask<Object, Object, Boolean> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
             builder.setCancelable(true);
             builder.setIcon(android.R.drawable.ic_dialog_alert);
-            builder.setTitle(this.context.getString(R.string.fbDialogErrorTitleSiteAdd));
-            builder.setMessage(this.context.getString(R.string.fbDialogErrorBodySiteAdd));
-            builder.setPositiveButton(this.context.getString(R.string.fbDialogErrorPositiveButtonSiteAdd), null);
+            builder.setTitle(this.context.getString(R.string.fbDialogErrorTitleSiteUpdate));
+            builder.setMessage(this.context.getString(R.string.fbDialogErrorBodySiteUpdate));
+            builder.setPositiveButton(this.context.getString(R.string.fbDialogErrorPositiveButtonSiteUpdate), null);
             builder.show();
 
         }

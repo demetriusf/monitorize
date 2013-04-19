@@ -1,8 +1,5 @@
 package com.asccode.siteswatch.telas;
 
-import android.widget.AdapterView;
-import com.asccode.siteswatch.dao.LoginDao;
-import com.asccode.siteswatch.models.Site;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +8,13 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+import com.asccode.siteswatch.R;
+import com.asccode.siteswatch.dao.LoginDao;
+import com.asccode.siteswatch.gcm.GCMDeviceManager;
+import com.asccode.siteswatch.models.Site;
 import com.asccode.siteswatch.task.SiteDeleteTask;
 import com.asccode.siteswatch.task.SiteListTask;
 
@@ -100,6 +101,8 @@ public class Main extends Activity {
             supportLogin.redirectNotLoggedUser();
 
         }
+
+        GCMDeviceManager.manager(this);
 
     }
 

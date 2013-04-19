@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.asccode.siteswatch.telas"
-
+          package="com.asccode.siteswatch"
         >
+
     <uses-sdk android:minSdkVersion="10"/>
+
+    <!-- Declare our own permissions -->
+    <permission android:name="com.asccode.siteswatch.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+
+    <!-- Declare need permissions -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.asccode.siteswatch.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />  <!-- App receives GCM messages. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Keeps the processor from sleeping when a message is received. -->
 
     <application android:icon="@drawable/icon" android:label="@string/app_name">
 
-        <activity android:name=".Main">
+        <activity android:name=".telas.Main">
 
             <intent-filter>
 
@@ -18,9 +27,20 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".Login"/>
-        <activity android:name=".CreateAccount"/>
-        <activity android:name=".Site"/>
+
+        <activity android:name=".telas.Login"/>
+        <activity android:name=".telas.CreateAccount"/>
+        <activity android:name=".telas.Site"/>
+
+        <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.asccode.siteswatch" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.asccode.siteswatch.gcm.GCMIntentService" />
 
     </application>
 </manifest>

@@ -39,6 +39,8 @@
     <string name="dialogBodySiteList">Conectando-se com o servidor</string>
     <string name="dialogTitleSiteAdd">Aguarde...</string>
     <string name="dialogBodySiteAdd">Site sendo adicionado</string>
+    <string name="dialogTitleSiteUpdate">Aguarde...</string>
+    <string name="dialogBodySiteUpdate">Site sendo atualizado</string>
     <string name="dialogTitleSiteDelete">Aguarde...</string>
     <string name="dialogBodySiteDelete">Site sendo deletado</string>
 
@@ -64,6 +66,9 @@
     <string name="fbDialogErrorTitleSiteAdd">Falhou!</string>
     <string name="fbDialogErrorBodySiteAdd">Não foi possível adicionar o site. Verifique a sua conexão com a internet!</string>
     <string name="fbDialogErrorPositiveButtonSiteAdd">OK</string>
+    <string name="fbDialogErrorTitleSiteUpdate">Falhou!</string>
+    <string name="fbDialogErrorBodySiteUpdate">Não foi possível atualizar o site. Verifique a sua conexão com a internet!</string>
+    <string name="fbDialogErrorPositiveButtonSiteUpdate">OK</string>
     <string name="fbDialogErrorTitleSiteList">Falhou!</string>
     <string name="fbDialogErrorBodySiteList">Não foi possível se conectar com o servidor. Verifique a sua conexão com a internet!</string>
     <string name="fbDialogErrorPositiveButtonSiteList">Tentar Novamente</string>

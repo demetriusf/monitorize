@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.*;
+import com.asccode.siteswatch.R;
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.task.SiteAddTask;
 import com.asccode.siteswatch.task.SiteRefreshDataEditTask;
