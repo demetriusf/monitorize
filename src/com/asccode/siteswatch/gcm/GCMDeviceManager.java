@@ -35,9 +35,11 @@ public class GCMDeviceManager {
 
         String regId = GCMRegistrar.getRegistrationId(context);
 
+        Toast.makeText(context, regId, Toast.LENGTH_LONG).show();
+        
+        
         if( regId.equals("") ){
 
-            Toast.makeText(context, regId, Toast.LENGTH_LONG).show();
 
             GCMRegistrar.register(context, GCMUtils.SENDER_ID);
 
