@@ -30,10 +30,10 @@ import java.util.Map;
 public class WebServiceOperations {
 
     private static final String TAG_DEBUG = "WEBSERVICE";
-    private static final String URL_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch/webservice/user";
-    private static final String URL_AUTHENTICATION_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch/webservice/auth/user";
-    private static final String URL_SITE_WEB_SERVICE = "http://10.0.2.2/sites-watch/webservice/site";
-    private static final String URL_GCM_WEB_SERVICE = "http://10.0.2.2/sites-watch/webservice/gcm";
+    private static final String URL_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/user";
+    private static final String URL_AUTHENTICATION_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/auth/user";
+    private static final String URL_SITE_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/site";
+    private static final String URL_GCM_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/gcm";
     private static final String TOKEN_MAGIC_KEY = "5I735_W47CH~";
 
     public Boolean registerUser(User user){

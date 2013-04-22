@@ -8,7 +8,7 @@ import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.support.Login;
 import com.asccode.siteswatch.support.WebServiceOperations;
-import com.asccode.siteswatch.telas.R;
+import com.asccode.siteswatch.R;
 
 /**
  * Created with IntelliJ IDEA.

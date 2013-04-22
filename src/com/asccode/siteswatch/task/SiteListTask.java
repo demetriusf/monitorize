@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import com.asccode.siteswatch.models.Site;
 import com.asccode.siteswatch.support.WebServiceOperations;
 import com.asccode.siteswatch.telas.Main;
-import com.asccode.siteswatch.telas.R;
+import com.asccode.siteswatch.R;
 
 import java.util.List;
 

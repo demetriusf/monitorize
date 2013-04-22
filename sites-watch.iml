@@ -36,10 +36,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Android 2.3.3 Google Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="gson-2.2.2" level="project" />
-    <orderEntry type="library" name="libs1" level="project" />
+    <orderEntry type="library" name="gcm" level="project" />
   </component>
 </module>
 

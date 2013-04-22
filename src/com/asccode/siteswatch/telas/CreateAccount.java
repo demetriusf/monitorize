@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.asccode.siteswatch.R;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.task.RegisterUserTask;
 

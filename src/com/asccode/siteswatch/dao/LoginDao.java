@@ -8,7 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.asccode.siteswatch.models.User;
-import com.asccode.siteswatch.telas.R;
+import com.asccode.siteswatch.R;
 
 /**
  * Created with IntelliJ IDEA.

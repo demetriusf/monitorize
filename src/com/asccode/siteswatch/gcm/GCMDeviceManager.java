@@ -21,13 +21,23 @@ public class GCMDeviceManager {
 
     public static void manager( Context context ){
 
-        GCMRegistrar.checkDevice(context);
+        try{
+
+            GCMRegistrar.checkDevice(context);
+            GCMRegistrar.checkManifest(context);
+
+        }catch (Exception e){
+
+            Log.e("GCM", e.getMessage());
+
+        }
+
 
         String regId = GCMRegistrar.getRegistrationId(context);
 
         if( regId.equals("") ){
 
-            Toast.makeText(context, "GCMRegistrar.register", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, regId, Toast.LENGTH_LONG).show();
 
             GCMRegistrar.register(context, GCMUtils.SENDER_ID);
 
