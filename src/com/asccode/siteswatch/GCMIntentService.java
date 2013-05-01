@@ -1,12 +1,17 @@
-package com.asccode.siteswatch.gcm;
+package com.asccode.siteswatch;
 
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 import com.asccode.siteswatch.dao.LoginDao;
+import com.asccode.siteswatch.gcm.GCMDeviceManager;
+import com.asccode.siteswatch.gcm.GCMUtils;
 import com.asccode.siteswatch.support.WebServiceOperations;
+import com.asccode.siteswatch.task.GCMRegisterOnServerTask;
+import com.asccode.siteswatch.task.GCMUnregisterOnServerTask;
 import com.google.android.gcm.GCMBaseIntentService;
+import com.google.android.gcm.GCMRegistrar;
 
 /**
  * Created with IntelliJ IDEA.
@@ -41,16 +46,19 @@ public class GCMIntentService extends GCMBaseIntentService {
     @Override
     protected void onRegistered(Context context, String regId) { /* SEND THE ID TO THE SERVER AND ABLE THE ANDROID NOTIFICATION PREFERENCES */
 
-        //Boolean resultRegister = new WebServiceOperations().registerUserGCM(regId, new LoginDao(context).getTokenUserLogged() );
-        Toast.makeText(context, "onRegistered", Toast.LENGTH_LONG).show();
-
+    	new GCMRegisterOnServerTask(regId, new LoginDao(context).getTokenUserLogged(), context).execute();
+    	
     }
 
     @Override
-    protected void onUnregistered(Context context, String regId) {  /* REMOVE THE ID TO THE SERVER AND DISABLE THE PREFERENCES ANDROID NOTIFICATION */
+    protected void onUnregistered(Context context, String regId) { 
 
-        Toast.makeText(context, "onUnregistered", Toast.LENGTH_LONG).show();
-
+    	// Try remove the device on the server
+    	new GCMUnregisterOnServerTask().execute(regId);
+    	
+    	// Anyway, the device will be unregistered, so if other user log in, We will insert it again.
+        GCMRegistrar.setRegisteredOnServer(context, false);
+        
     }
 
     @Override
@@ -58,7 +66,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 
         Toast.makeText(context, "onRecoverableError", Toast.LENGTH_LONG).show();
 
-        return super.onRecoverableError(context, errorId);    //To change body of overridden methods use File | Settings | File Templates.
+        return super.onRecoverableError(context, errorId); 
 
     }
 }

@@ -3,10 +3,13 @@ package com.asccode.siteswatch.support;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.task.AuthenticationUserTask;
+import com.asccode.siteswatch.task.RegisterUserTask;
 import com.asccode.siteswatch.telas.Main;
+import com.google.android.gcm.GCMRegistrar;
 
 /**
  * Created with IntelliJ IDEA.
@@ -35,6 +38,8 @@ public class Login {
 
         new LoginDao(this.context).logout();
 
+        GCMRegistrar.unregister(this.context);
+        
         redirectNotLoggedUser();
 
     }

@@ -1,6 +1,7 @@
 package com.asccode.siteswatch.support;
 
 import android.util.Log;
+
 import com.asccode.siteswatch.models.Site;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.telas.Main;
@@ -316,6 +317,41 @@ public class WebServiceOperations {
             result = Boolean.parseBoolean(jsonResponse.get("feedback"));
 
             Log.v(WebServiceOperations.TAG_DEBUG, String.valueOf(jsonResponse.get("feedback")) );
+
+        } catch (Exception exception) {
+
+            Log.e(WebServiceOperations.TAG_DEBUG, exception.getMessage());
+
+        }
+
+        return result;
+
+    }
+    
+    public Boolean unregisterUserGCM(String regId){
+
+        String queryString = String.format("/regId/%s", regId);
+        
+        DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
+        HttpDelete httpDelete = new HttpDelete(WebServiceOperations.URL_GCM_WEB_SERVICE+queryString);
+
+        httpDelete.setHeader("Accept", "application/json");
+        httpDelete.setHeader("Content-type", "application/json");
+
+        Boolean result = false;
+
+        try {
+
+            Gson gson = new Gson();
+            
+            HttpResponse httpResponse = defaultHttpClient.execute(httpDelete);
+
+            String responseEntity = EntityUtils.toString(httpResponse.getEntity());
+
+            Map<String, String> jsonResponse = gson.fromJson(responseEntity, Map.class);
+
+            result = Boolean.parseBoolean(jsonResponse.get("feedback"));
+
 
         } catch (Exception exception) {
 
