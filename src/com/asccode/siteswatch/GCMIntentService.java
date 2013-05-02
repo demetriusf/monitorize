@@ -2,12 +2,9 @@ package com.asccode.siteswatch;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 import com.asccode.siteswatch.dao.LoginDao;
-import com.asccode.siteswatch.gcm.GCMDeviceManager;
 import com.asccode.siteswatch.gcm.GCMUtils;
-import com.asccode.siteswatch.support.WebServiceOperations;
 import com.asccode.siteswatch.task.GCMRegisterOnServerTask;
 import com.asccode.siteswatch.task.GCMUnregisterOnServerTask;
 import com.google.android.gcm.GCMBaseIntentService;

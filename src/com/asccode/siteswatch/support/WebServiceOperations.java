@@ -1,10 +1,8 @@
 package com.asccode.siteswatch.support;
 
 import android.util.Log;
-
 import com.asccode.siteswatch.models.Site;
 import com.asccode.siteswatch.models.User;
-import com.asccode.siteswatch.telas.Main;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.apache.http.HttpResponse;
@@ -16,7 +14,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -305,7 +302,7 @@ public class WebServiceOperations {
 
             Gson gson = new Gson();
 
-            String stringF = String.format("{\"regId\":%s,\"loginUserToken\":\"%s\"}", regId, loginUserToken);
+            String stringF = String.format("{\"regId\":\"%s\",\"loginUserToken\":\"%s\"}", regId, loginUserToken);
 
             httpPut.setEntity(new StringEntity(stringF));
             HttpResponse httpResponse = defaultHttpClient.execute(httpPut);
@@ -316,7 +313,7 @@ public class WebServiceOperations {
 
             result = Boolean.parseBoolean(jsonResponse.get("feedback"));
 
-            Log.v(WebServiceOperations.TAG_DEBUG, String.valueOf(jsonResponse.get("feedback")) );
+            Log.d(WebServiceOperations.TAG_DEBUG, responseEntity);
 
         } catch (Exception exception) {
 

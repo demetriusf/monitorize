@@ -1,14 +1,8 @@
 package com.asccode.siteswatch.gcm;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
-import android.util.Log;
-import android.widget.Toast;
-
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.task.GCMRegisterOnServerTask;
-import com.google.android.gcm.GCMBroadcastReceiver;
 import com.google.android.gcm.GCMRegistrar;
 
 public class GCMDeviceManager {

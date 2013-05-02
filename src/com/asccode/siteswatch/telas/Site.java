@@ -4,13 +4,17 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.URLUtil;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
 import com.asccode.siteswatch.R;
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.task.SiteAddTask;
 import com.asccode.siteswatch.task.SiteRefreshDataEditTask;
 import com.asccode.siteswatch.task.SiteUpdateTask;
 import org.apache.http.conn.util.InetAddressUtils;
+
 import java.util.Timer;
 import java.util.TimerTask;
 

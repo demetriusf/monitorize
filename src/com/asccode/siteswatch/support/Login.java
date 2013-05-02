@@ -3,11 +3,9 @@ package com.asccode.siteswatch.support;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.task.AuthenticationUserTask;
-import com.asccode.siteswatch.task.RegisterUserTask;
 import com.asccode.siteswatch.telas.Main;
 import com.google.android.gcm.GCMRegistrar;
 

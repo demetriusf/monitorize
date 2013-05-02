@@ -3,10 +3,10 @@ package com.asccode.siteswatch.task;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import com.asccode.siteswatch.R;
 import com.asccode.siteswatch.models.Site;
 import com.asccode.siteswatch.support.WebServiceOperations;
 import com.asccode.siteswatch.telas.Main;
-import com.asccode.siteswatch.R;
 
 import java.util.List;
 
