@@ -34,6 +34,7 @@
         <activity android:name=".telas.Login"/>
         <activity android:name=".telas.CreateAccount"/>
         <activity android:name=".telas.Site"/>
+        <activity android:name=".telas.Notification"/>
 
         <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>

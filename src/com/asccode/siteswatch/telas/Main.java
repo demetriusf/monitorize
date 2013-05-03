@@ -15,6 +15,7 @@ import com.asccode.siteswatch.R;
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.gcm.GCMDeviceManager;
 import com.asccode.siteswatch.models.Site;
+import com.asccode.siteswatch.support.NotificationSupport;
 import com.asccode.siteswatch.task.SiteDeleteTask;
 import com.asccode.siteswatch.task.SiteListTask;
 
