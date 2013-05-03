@@ -70,7 +70,7 @@
     <string name="fbDialogErrorBodySiteUpdate">Não foi possível atualizar o site. Verifique a sua conexão com a internet!</string>
     <string name="fbDialogErrorPositiveButtonSiteUpdate">OK</string>
     <string name="fbDialogErrorTitleSiteList">Falhou!</string>
-    <string name="fbDialogErrorBodySiteList">Não foi possível se conectar com o servidor. Verifique a sua conexão com a internet!</string>
+    <string name="fbDialogErrorBodySiteList">Você ou não cadastrou nenhum site ou esta sem conexão com a internet!</string>
     <string name="fbDialogErrorPositiveButtonSiteList">Tentar Novamente</string>
     <string name="fbDialogErrorTitleSiteDelete">Falhou!</string>
     <string name="fbDialogErrorBodySiteDelete">Não foi possível deletar o site. Verifique a sua conexão com a internet!</string>

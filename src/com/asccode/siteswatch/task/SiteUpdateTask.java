@@ -59,7 +59,7 @@ public class SiteUpdateTask extends AsyncTask<Object, Object, Boolean> {
         }else{
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
-            builder.setCancelable(true);
+            builder.setCancelable(false);
             builder.setIcon(android.R.drawable.ic_dialog_alert);
             builder.setTitle(this.context.getString(R.string.fbDialogErrorTitleSiteUpdate));
             builder.setMessage(this.context.getString(R.string.fbDialogErrorBodySiteUpdate));

@@ -100,7 +100,7 @@ public class WebServiceOperations {
 
             }
 
-            Log.d(WebServiceOperations.TAG_DEBUG, feedback );
+            Log.d(WebServiceOperations.TAG_DEBUG, "Authentication = "+feedback );
 
         }catch (Exception exception){
 
@@ -344,7 +344,7 @@ public class WebServiceOperations {
             HttpResponse httpResponse = defaultHttpClient.execute(httpDelete);
 
             String responseEntity = EntityUtils.toString(httpResponse.getEntity());
-
+            
             Map<String, String> jsonResponse = gson.fromJson(responseEntity, Map.class);
 
             result = Boolean.parseBoolean(jsonResponse.get("feedback"));
