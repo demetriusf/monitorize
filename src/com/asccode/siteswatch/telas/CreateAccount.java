@@ -3,6 +3,7 @@ package com.asccode.siteswatch.telas;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,7 +74,7 @@ public class CreateAccount extends Activity {
 
     private boolean validFields(){
 
-        if( this.editTextEmail.getEditableText().toString().isEmpty() || !Pattern.compile("^(\\w){2,}@(\\w){2,}[.](\\w){2,}([.](\\w)*)?$").matcher(this.editTextEmail.getEditableText().toString()).find()){
+        if( this.editTextEmail.getEditableText().toString().isEmpty() || !Pattern.compile(Patterns.EMAIL_ADDRESS.pattern()).matcher(this.editTextEmail.getEditableText().toString()).find()){
 
             Toast.makeText(this, getString(R.string.fbAlertEmptyEmail), Toast.LENGTH_LONG).show();
             return false;

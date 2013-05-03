@@ -1,5 +1,7 @@
 package com.asccode.siteswatch.models;
 
+import android.util.Patterns;
+
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
@@ -28,7 +30,7 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
 
-        if(!Pattern.compile("^(\\w){2,}@(\\w){2,}[.](\\w){2,}([.](\\w)*)?$").matcher(email).find()){
+        if(!Pattern.compile(Patterns.EMAIL_ADDRESS.pattern()).matcher(email).find()){
 
             throw new IllegalArgumentException("The email needs to be valid.");
 

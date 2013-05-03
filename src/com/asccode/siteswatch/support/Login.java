@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.asccode.siteswatch.dao.LoginDao;
 import com.asccode.siteswatch.models.User;
 import com.asccode.siteswatch.task.AuthenticationUserTask;
+import com.asccode.siteswatch.task.GCMUnregisterOnServerTask;
 import com.asccode.siteswatch.telas.Main;
 import com.google.android.gcm.GCMRegistrar;
 
@@ -36,8 +37,15 @@ public class Login {
 
         new LoginDao(this.context).logout();
 
-        GCMRegistrar.unregister(this.context);
-        
+        if( !GCMRegistrar.getRegistrationId(this.context).isEmpty() ){
+
+            // Try remove the device on the server
+            new GCMUnregisterOnServerTask().execute(GCMRegistrar.getRegistrationId(this.context));
+
+            GCMRegistrar.setRegisteredOnServer(context, false);
+
+        }
+
         redirectNotLoggedUser();
 
     }
