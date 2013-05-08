@@ -41,7 +41,7 @@ public class WebServiceOperations {
 
         // Set Header
         httpPut.setHeader("Accept", "application/json");
-        httpPut.setHeader("Content-type", "application/json");
+        httpPut.setHeader("Content-type", "application/json; charset=UTF-8");
 
         //Return
         Boolean result = false;
@@ -74,7 +74,7 @@ public class WebServiceOperations {
         HttpPost httpPost = new HttpPost(WebServiceOperations.URL_AUTHENTICATION_USER_WEB_SERVICE);
 
         httpPost.setHeader("Accept", "application/json");
-        httpPost.setHeader("Content-type", "application/json");
+        httpPost.setHeader("Content-type", "application/json; charset=UTF-8");
 
         String result = "";
 
@@ -120,7 +120,7 @@ public class WebServiceOperations {
         HttpGet httpGet = new HttpGet(WebServiceOperations.URL_SITE_WEB_SERVICE+queryString);
 
         httpGet.setHeader("Accept", "application/json");
-        httpGet.setHeader("Content-type", "application/json");
+        httpGet.setHeader("Content-type", "application/json; charset=UTF-8");
 
         ArrayList<Site> sites = new ArrayList<Site>();
 
@@ -152,7 +152,7 @@ public class WebServiceOperations {
         HttpGet httpGet = new HttpGet(WebServiceOperations.URL_SITE_WEB_SERVICE+queryString);
 
         httpGet.setHeader("Accept", "application/json");
-        httpGet.setHeader("Content-type", "application/json");
+        httpGet.setHeader("Content-type", "application/json; charset=UTF-8");
 
         Site siteReturn = null;
 
@@ -182,7 +182,7 @@ public class WebServiceOperations {
         HttpPut httpPut = new HttpPut(WebServiceOperations.URL_SITE_WEB_SERVICE);
 
         httpPut.setHeader("Accept", "application/json");
-        httpPut.setHeader("Content-type", "application/json");
+        httpPut.setHeader("Content-type", "application/json; charset=UTF-8");
 
         Boolean result = false;
 
@@ -222,7 +222,7 @@ public class WebServiceOperations {
         HttpPost httpPost = new HttpPost(WebServiceOperations.URL_SITE_WEB_SERVICE);
 
         httpPost.setHeader("Accept", "application/json");
-        httpPost.setHeader("Content-type", "application/json");
+        httpPost.setHeader("Content-type", "application/json; charset=UTF-8");
 
         Boolean result = false;
 
@@ -262,7 +262,7 @@ public class WebServiceOperations {
         HttpDelete httpDelete = new HttpDelete(WebServiceOperations.URL_SITE_WEB_SERVICE+queryString);
 
         httpDelete.setHeader("Accept", "application/json");
-        httpDelete.setHeader("Content-type", "application/json");
+        httpDelete.setHeader("Content-type", "application/json; charset=UTF-8");
 
         Boolean result = false;
 
@@ -294,7 +294,7 @@ public class WebServiceOperations {
         HttpPut httpPut = new HttpPut(WebServiceOperations.URL_GCM_WEB_SERVICE);
 
         httpPut.setHeader("Accept", "application/json");
-        httpPut.setHeader("Content-type", "application/json");
+        httpPut.setHeader("Content-type", "application/json; charset=UTF-8");
 
         Boolean result = false;
 
@@ -333,7 +333,7 @@ public class WebServiceOperations {
         HttpDelete httpDelete = new HttpDelete(WebServiceOperations.URL_GCM_WEB_SERVICE+queryString);
 
         httpDelete.setHeader("Accept", "application/json");
-        httpDelete.setHeader("Content-type", "application/json");
+        httpDelete.setHeader("Content-type", "application/json; charset=UTF-8");
 
         Boolean result = false;
 
