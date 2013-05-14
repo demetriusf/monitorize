@@ -1,13 +1,13 @@
-package com.asccode.siteswatch.support;
+package com.asccode.monitorize.support;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import com.asccode.siteswatch.dao.LoginDao;
-import com.asccode.siteswatch.models.User;
-import com.asccode.siteswatch.task.AuthenticationUserTask;
-import com.asccode.siteswatch.task.GCMUnregisterOnServerTask;
-import com.asccode.siteswatch.telas.Main;
+import com.asccode.monitorize.dao.LoginDao;
+import com.asccode.monitorize.models.User;
+import com.asccode.monitorize.task.AuthenticationUserTask;
+import com.asccode.monitorize.task.GCMUnregisterOnServerTask;
+import com.asccode.monitorize.telas.Main;
 import com.google.android.gcm.GCMRegistrar;
 
 /**
@@ -62,7 +62,7 @@ public class Login {
     public void redirectNotLoggedUser(){
 
 
-        Intent intentLogin = new Intent(this.context, com.asccode.siteswatch.telas.Login.class);
+        Intent intentLogin = new Intent(this.context, com.asccode.monitorize.telas.Login.class);
         intentLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         this.context.startActivity(intentLogin);
         ((Activity)this.context).finish();

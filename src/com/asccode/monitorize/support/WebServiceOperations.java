@@ -1,8 +1,8 @@
-package com.asccode.siteswatch.support;
+package com.asccode.monitorize.support;
 
 import android.util.Log;
-import com.asccode.siteswatch.models.Site;
-import com.asccode.siteswatch.models.User;
+import com.asccode.monitorize.models.Site;
+import com.asccode.monitorize.models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.apache.http.HttpResponse;
@@ -28,11 +28,11 @@ import java.util.Map;
 public class WebServiceOperations {
 
     private static final String TAG_DEBUG = "WEBSERVICE";
-    private static final String URL_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/user";
-    private static final String URL_AUTHENTICATION_USER_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/auth/user";
-    private static final String URL_SITE_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/site";
-    private static final String URL_GCM_WEB_SERVICE = "http://10.0.2.2/sites-watch-server/webservice/gcm";
-    private static final String TOKEN_MAGIC_KEY = "5I735_W47CH~";
+    private static final String URL_USER_WEB_SERVICE = "http://www.asccode.com/monitorize/webservice/user";
+    private static final String URL_AUTHENTICATION_USER_WEB_SERVICE = "http://www.asccode.com/monitorize/webservice/auth/user";
+    private static final String URL_SITE_WEB_SERVICE = "http://www.asccode.com/monitorize/webservice/site";
+    private static final String URL_GCM_WEB_SERVICE = "http://www.asccode.com/monitorize/webservice/gcm";
+    private static final String TOKEN_MAGIC_KEY = "5I735_W47TCHIM~";
 
     public Boolean registerUser(User user){
 

@@ -1,4 +1,4 @@
-package com.asccode.siteswatch.telas;
+package com.asccode.monitorize.telas;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,11 +8,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.asccode.siteswatch.R;
-import com.asccode.siteswatch.dao.LoginDao;
-import com.asccode.siteswatch.task.SiteAddTask;
-import com.asccode.siteswatch.task.SiteRefreshDataEditTask;
-import com.asccode.siteswatch.task.SiteUpdateTask;
+import com.asccode.monitorize.R;
+import com.asccode.monitorize.dao.LoginDao;
+import com.asccode.monitorize.task.SiteAddTask;
+import com.asccode.monitorize.task.SiteRefreshDataEditTask;
+import com.asccode.monitorize.task.SiteUpdateTask;
 import org.apache.http.conn.util.InetAddressUtils;
 
 import java.util.Timer;
@@ -32,7 +32,7 @@ public class Site extends Activity {
     private CheckBox checkBoxReceiveAndroidNotification;
     private CheckBox checkBoxOptPing;
     private Button button;
-    private com.asccode.siteswatch.models.Site site;
+    private com.asccode.monitorize.models.Site site;
     private boolean opAdd = true;
     private Timer timer = new Timer();
 
@@ -48,7 +48,7 @@ public class Site extends Activity {
         this.checkBoxOptPing = (CheckBox) findViewById(R.id.checkBoxOptPing);
         this.button = (Button) findViewById(R.id.button);
 
-        this.setSite( (com.asccode.siteswatch.models.Site) getIntent().getSerializableExtra("site") );
+        this.setSite( (com.asccode.monitorize.models.Site) getIntent().getSerializableExtra("site") );
 
         if(this.getSite() != null){
 
@@ -81,7 +81,7 @@ public class Site extends Activity {
 
         }else{
 
-            this.setSite(new com.asccode.siteswatch.models.Site());
+            this.setSite(new com.asccode.monitorize.models.Site());
 
         }
 
@@ -114,13 +114,13 @@ public class Site extends Activity {
     }
 
 
-    public com.asccode.siteswatch.models.Site getSite() {
+    public com.asccode.monitorize.models.Site getSite() {
 
         return this.site;
 
     }
 
-    public void setSite(com.asccode.siteswatch.models.Site site) {
+    public void setSite(com.asccode.monitorize.models.Site site) {
         this.site = site;
     }
 
@@ -133,7 +133,7 @@ public class Site extends Activity {
 
     }
 
-    private boolean isValidSite( com.asccode.siteswatch.models.Site site ){
+    private boolean isValidSite( com.asccode.monitorize.models.Site site ){
 
         if( site.getName().isEmpty() ){
 

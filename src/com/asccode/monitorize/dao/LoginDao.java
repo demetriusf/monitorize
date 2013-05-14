@@ -1,4 +1,4 @@
-package com.asccode.siteswatch.dao;
+package com.asccode.monitorize.dao;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
@@ -7,7 +7,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.asccode.siteswatch.R;
+import com.asccode.monitorize.R;
 
 /**
  * Created with IntelliJ IDEA.

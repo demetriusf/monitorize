@@ -1,4 +1,4 @@
-package com.asccode.siteswatch.support;
+package com.asccode.monitorize.support;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
-import com.asccode.siteswatch.R;
+import com.asccode.monitorize.R;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,14 +25,14 @@ public class NotificationSupport {
                                                                                     .setSmallIcon(android.R.drawable.ic_dialog_alert)
                                                                                     .setAutoCancel(true);
 
-        Intent resultIntent = new Intent(context, com.asccode.siteswatch.telas.Notification.class);
+        Intent resultIntent = new Intent(context, com.asccode.monitorize.telas.Notification.class);
 
         // add data
         resultIntent.putExtra("message", message);
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.from(context);
 
-        stackBuilder.addParentStack(com.asccode.siteswatch.telas.Notification.class);
+        stackBuilder.addParentStack(com.asccode.monitorize.telas.Notification.class);
 
         stackBuilder.addNextIntent(resultIntent);
         PendingIntent resultPendingIntent = stackBuilder.getPendingIntent( 0, PendingIntent.FLAG_UPDATE_CURRENT );

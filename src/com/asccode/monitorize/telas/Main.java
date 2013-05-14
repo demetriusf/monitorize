@@ -1,4 +1,4 @@
-package com.asccode.siteswatch.telas;
+package com.asccode.monitorize.telas;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,13 +11,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.asccode.siteswatch.R;
-import com.asccode.siteswatch.dao.LoginDao;
-import com.asccode.siteswatch.gcm.GCMDeviceManager;
-import com.asccode.siteswatch.models.Site;
-import com.asccode.siteswatch.support.NotificationSupport;
-import com.asccode.siteswatch.task.SiteDeleteTask;
-import com.asccode.siteswatch.task.SiteListTask;
+import com.asccode.monitorize.R;
+import com.asccode.monitorize.dao.LoginDao;
+import com.asccode.monitorize.gcm.GCMDeviceManager;
+import com.asccode.monitorize.models.Site;
+import com.asccode.monitorize.task.SiteDeleteTask;
+import com.asccode.monitorize.task.SiteListTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +41,7 @@ public class Main extends Activity {
 
         super.onCreate(savedInstanceState);
 
-        if( new com.asccode.siteswatch.support.Login(this).isUserLogged()){
+        if( new com.asccode.monitorize.support.Login(this).isUserLogged()){
 
             setContentView(R.layout.inicial);
 
@@ -95,7 +94,7 @@ public class Main extends Activity {
 
         super.onResume();
 
-        com.asccode.siteswatch.support.Login supportLogin = new com.asccode.siteswatch.support.Login(this);
+        com.asccode.monitorize.support.Login supportLogin = new com.asccode.monitorize.support.Login(this);
 
         if( !supportLogin.isUserLogged() ){
 
@@ -121,11 +120,11 @@ public class Main extends Activity {
         switch( item.getItemId() ){
 
             case R.id.menuItemLogout:
-                new com.asccode.siteswatch.support.Login(this).logout();
+                new com.asccode.monitorize.support.Login(this).logout();
                 break;
 
             case R.id.menuItemSiteAdd:
-                startActivityForResult(new Intent(this, com.asccode.siteswatch.telas.Site.class), Main.REQUEST_CODE_ACTIVITY_SITE);
+                startActivityForResult(new Intent(this, com.asccode.monitorize.telas.Site.class), Main.REQUEST_CODE_ACTIVITY_SITE);
                 break;
 
             case R.id.menuItemRefreshList:
@@ -157,7 +156,7 @@ public class Main extends Activity {
 
                 if( this.selectedSite != null ){
 
-                    Intent intent = new Intent(this, com.asccode.siteswatch.telas.Site.class);
+                    Intent intent = new Intent(this, com.asccode.monitorize.telas.Site.class);
                     intent.putExtra("site", this.selectedSite);
 
                     startActivityForResult(intent, Main.REQUEST_CODE_ACTIVITY_SITE);

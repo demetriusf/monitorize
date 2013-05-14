@@ -1,4 +1,4 @@
-package com.asccode.siteswatch.telas;
+package com.asccode.monitorize.telas;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.asccode.siteswatch.R;
-import com.asccode.siteswatch.models.User;
-import com.asccode.siteswatch.task.RegisterUserTask;
+import com.asccode.monitorize.R;
+import com.asccode.monitorize.models.User;
+import com.asccode.monitorize.task.RegisterUserTask;
 
 import java.util.regex.Pattern;
 

@@ -1,4 +1,4 @@
-package com.asccode.siteswatch.support;
+package com.asccode.monitorize.support;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

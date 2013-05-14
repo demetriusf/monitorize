@@ -1,8 +1,8 @@
-package com.asccode.siteswatch.gcm;
+package com.asccode.monitorize.gcm;
 
 import android.content.Context;
-import com.asccode.siteswatch.dao.LoginDao;
-import com.asccode.siteswatch.task.GCMRegisterOnServerTask;
+import com.asccode.monitorize.dao.LoginDao;
+import com.asccode.monitorize.task.GCMRegisterOnServerTask;
 import com.google.android.gcm.GCMRegistrar;
 
 public class GCMDeviceManager {

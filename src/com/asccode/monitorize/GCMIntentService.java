@@ -1,13 +1,12 @@
-package com.asccode.siteswatch;
+package com.asccode.monitorize;
 
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
-import com.asccode.siteswatch.dao.LoginDao;
-import com.asccode.siteswatch.gcm.GCMUtils;
-import com.asccode.siteswatch.support.NotificationSupport;
-import com.asccode.siteswatch.task.GCMRegisterOnServerTask;
-import com.asccode.siteswatch.task.GCMUnregisterOnServerTask;
+import com.asccode.monitorize.dao.LoginDao;
+import com.asccode.monitorize.gcm.GCMUtils;
+import com.asccode.monitorize.support.NotificationSupport;
+import com.asccode.monitorize.task.GCMRegisterOnServerTask;
+import com.asccode.monitorize.task.GCMUnregisterOnServerTask;
 import com.google.android.gcm.GCMBaseIntentService;
 import com.google.android.gcm.GCMRegistrar;
 

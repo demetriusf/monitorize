@@ -1,7 +1,7 @@
-package com.asccode.siteswatch.task;
+package com.asccode.monitorize.task;
 
 import android.os.AsyncTask;
-import com.asccode.siteswatch.support.WebServiceOperations;
+import com.asccode.monitorize.support.WebServiceOperations;
 
 public class GCMUnregisterOnServerTask extends AsyncTask<String, Object, Object>{
 

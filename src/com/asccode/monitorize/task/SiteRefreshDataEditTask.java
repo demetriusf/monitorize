@@ -1,10 +1,10 @@
-package com.asccode.siteswatch.task;
+package com.asccode.monitorize.task;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import com.asccode.siteswatch.models.Site;
-import com.asccode.siteswatch.support.WebServiceOperations;
+import com.asccode.monitorize.models.Site;
+import com.asccode.monitorize.support.WebServiceOperations;
 
 /**
  * Created with IntelliJ IDEA.
@@ -38,11 +38,11 @@ public class SiteRefreshDataEditTask extends AsyncTask<Object, Object, Boolean>{
     @Override
     protected Boolean doInBackground(Object... objects) {
 
-        Site returnedSite = new WebServiceOperations().siteGet(((com.asccode.siteswatch.telas.Site)this.context).getSite(), this.loginUserToken);
+        Site returnedSite = new WebServiceOperations().siteGet(((com.asccode.monitorize.telas.Site)this.context).getSite(), this.loginUserToken);
 
         if( returnedSite != null ){
 
-            ((com.asccode.siteswatch.telas.Site)this.context).setSite(returnedSite);
+            ((com.asccode.monitorize.telas.Site)this.context).setSite(returnedSite);
 
             return true;
 
@@ -61,7 +61,7 @@ public class SiteRefreshDataEditTask extends AsyncTask<Object, Object, Boolean>{
 
         if(result){
 
-            ((com.asccode.siteswatch.telas.Site)this.context).updateFieldsWithSiteValues();
+            ((com.asccode.monitorize.telas.Site)this.context).updateFieldsWithSiteValues();
 
         }
 

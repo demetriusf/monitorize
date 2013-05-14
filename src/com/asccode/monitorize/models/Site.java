@@ -1,4 +1,4 @@
-package com.asccode.siteswatch.models;
+package com.asccode.monitorize.models;
 
 import java.io.Serializable;
 

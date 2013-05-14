@@ -1,13 +1,13 @@
-package com.asccode.siteswatch.task;
+package com.asccode.monitorize.task;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import com.asccode.siteswatch.R;
-import com.asccode.siteswatch.models.Site;
-import com.asccode.siteswatch.support.WebServiceOperations;
+import com.asccode.monitorize.R;
+import com.asccode.monitorize.models.Site;
+import com.asccode.monitorize.support.WebServiceOperations;
 
 /**
  * Created with IntelliJ IDEA.
@@ -52,8 +52,8 @@ public class SiteAddTask extends AsyncTask<Object, Object, Boolean> {
 
         if(result){
 
-            ((com.asccode.siteswatch.telas.Site) this.context).setResult(Activity.RESULT_OK);
-            ((com.asccode.siteswatch.telas.Site) this.context).finish();
+            ((com.asccode.monitorize.telas.Site) this.context).setResult(Activity.RESULT_OK);
+            ((com.asccode.monitorize.telas.Site) this.context).finish();
 
         }else{
 

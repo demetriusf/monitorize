@@ -1,4 +1,4 @@
-package com.asccode.siteswatch.gcm;
+package com.asccode.monitorize.gcm;
 
 /**
  * Created with IntelliJ IDEA.

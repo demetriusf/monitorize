@@ -1,8 +1,8 @@
-package com.asccode.siteswatch.task;
+package com.asccode.monitorize.task;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import com.asccode.siteswatch.support.WebServiceOperations;
+import com.asccode.monitorize.support.WebServiceOperations;
 import com.google.android.gcm.GCMRegistrar;
 
 public class GCMRegisterOnServerTask extends AsyncTask<Object, Object, Boolean>{

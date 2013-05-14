@@ -1,4 +1,4 @@
-package com.asccode.siteswatch.telas;
+package com.asccode.monitorize.telas;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.asccode.siteswatch.R;
-import com.asccode.siteswatch.models.User;
+import com.asccode.monitorize.R;
+import com.asccode.monitorize.models.User;
 
 import java.util.regex.Pattern;
 
@@ -53,7 +53,7 @@ public class Login extends Activity {
                     user.setEmail(email);
                     user.setPwd(pwd);
 
-                    new com.asccode.siteswatch.support.Login(Login.this).login(user);
+                    new com.asccode.monitorize.support.Login(Login.this).login(user);
 
                 }
 

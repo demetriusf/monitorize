@@ -1,13 +1,13 @@
-package com.asccode.siteswatch.task;
+package com.asccode.monitorize.task;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.widget.Toast;
-import com.asccode.siteswatch.R;
-import com.asccode.siteswatch.models.User;
-import com.asccode.siteswatch.support.WebServiceOperations;
-import com.asccode.siteswatch.telas.CreateAccount;
+import com.asccode.monitorize.R;
+import com.asccode.monitorize.models.User;
+import com.asccode.monitorize.support.WebServiceOperations;
+import com.asccode.monitorize.telas.CreateAccount;
 
 /**
  * Created with IntelliJ IDEA.
