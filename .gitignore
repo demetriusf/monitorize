@@ -191,3 +191,6 @@ proguard/
 *.ipr
 *.iws
 .idea/
+
+#custom
+monitorize.apk

@@ -32,7 +32,7 @@ public class WebServiceOperations {
     private static final String URL_AUTHENTICATION_USER_WEB_SERVICE = "http://10.0.2.2/monitorize-server/webservice/auth/user";
     private static final String URL_SITE_WEB_SERVICE = "http://10.0.2.2/monitorize-server/webservice/site";
     private static final String URL_GCM_WEB_SERVICE = "http://10.0.2.2/monitorize-server/webservice/gcm";
-    private static final String TOKEN_MAGIC_KEY = "5I735_W47TCHIM~";
+    private static final String TOKEN_MAGIC_KEY = "YOUR_KEY";
 
     public Boolean registerUser(User user){
 
